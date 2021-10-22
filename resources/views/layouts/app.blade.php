@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
     <div id="app">
@@ -79,5 +80,17 @@
             @yield('content')
         </main>
     </div>
+    <!-- JAVASCRIPT
+        ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/reveal-home.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- End Document
+    ================================================== -->
 </body>
 </html>
+
+
