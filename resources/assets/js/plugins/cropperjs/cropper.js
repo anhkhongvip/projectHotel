@@ -131,7 +131,7 @@
   }
 
   function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn booking to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
   var IS_BROWSER = typeof window !== 'undefined' && typeof window.document !== 'undefined';

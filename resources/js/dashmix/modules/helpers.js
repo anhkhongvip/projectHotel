@@ -491,7 +491,7 @@ export default class Helpers {
     /*
      ********************************************************************************************
      *
-     * All the following helpers require each plugin's resources (JS, CSS) to be included in order to work
+     * All the following helpers require each plugin's resources (JS, CSS) to be included in booking to work
      *
      ********************************************************************************************
      */

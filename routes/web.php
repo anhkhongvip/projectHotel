@@ -19,10 +19,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
-
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'],function(){
+    //Route::get("/room", App\Http\Controllers\RoomController::class);
+    Route::get('/room', [App\Http\Controllers\RoomController::class, 'indexAdmin'])->name('roomAdmin');
+    Route::resource('booking',App\Http\Controllers\BookingController::class);
+    Route::resource('blog',App\Http\Controllers\BlogController::class);
+    Route::resource('account',App\Http\Controllers\AccountController::class);
+});
+
+Route::get('/getroom', [App\Http\Controllers\BookingController::class, 'getRoom'])->name('getRoom');
+
+
+
+
+
+
+
