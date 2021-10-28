@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\customer;
 use App\Models\order;
 use App\Models\order_room;
@@ -9,6 +10,7 @@ use App\Models\order_service;
 use App\Models\room;
 use App\Models\rooms_type;
 use App\Models\service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -34,7 +36,9 @@ class BookingController extends Controller
         $service_list = service::all();
         $roomtype = rooms_type::all();
         $room_list = room::all();
-        return view('admin.booking.add')->with(['roomtype' => $roomtype, 'room_list' => $room_list, 'service_list' => $service_list]);
+        $date = Carbon::now();
+        $date = $date->format("Y-m-d");
+        return view('admin.booking.add')->with(['roomtype' => $roomtype, 'room_list' => $room_list, 'service_list' => $service_list, 'date' => $date]);
     }
 
     /**
@@ -75,6 +79,9 @@ class BookingController extends Controller
             $orderService->order_id = $newest_order->id;
             $orderService->save();
         }
+
+
+
 
         return redirect(route("booking.index"));
     }

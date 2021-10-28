@@ -46,6 +46,20 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6">
+                                    <label class="form-label" for="dm-project-check-in">Check-in Date</label>
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-in" name="dm-project-check-in" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$date}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="dm-project-check-out">Check-out Date</label>
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-out" name="dm-project-check-out" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
                                     <label for="dm-ecom-product-price">Room Price in USD ($)</label>
                                     <input type="text" class="form-control" id="dm-ecom-product-price" name="dm-ecom-product-price"
                                            value="0" disabled>
