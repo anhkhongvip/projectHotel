@@ -3,6 +3,13 @@
     <!-- Page Content -->
     <div class="content">
         <!-- Info -->
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $err)
+                    <p>{{$err}}</p>
+                @endforeach
+            </div>
+        @endif
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Edit Room Booking</h3>
@@ -10,22 +17,20 @@
             <div class="block-content">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
-                        <form class="form" method="POST" onsubmit="return false;" action="#">
+                        <form class="form" method="POST" action="{{route('booking.update', $order->id)}}">
                             @csrf
                             <div class="form-group">
                                 <label for="dm-ecom-product-name">Name</label>
-                                <input type="text" class="form-control" id="dm-ecom-product-name" name="dm-ecom-product-name">
+                                <input type="text" class="form-control" id="dm-ecom-product-name" name="customer_name"
+                                       value="{{$order->customer->name}}">
                             </div>
+
                             <div class="form-group">
                                 <label for="dm-ecom-product-email">Email</label>
-                                <input type="email" class="form-control" id="dm-ecom-product-email" name="dm-ecom-product-email">
+                                <input type="email" class="form-control" id="dm-ecom-product-email" name="customer_email"
+                                        value="{{$order->customer->email}}">
                             </div>
-                            <div class="form-group">
-                                <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.ckeditor()) -->
-                                <!-- For more info and examples you can check out http://ckeditor.com -->
-                                <label for="dm-ecom-product-description">Description</label>
-                                <textarea id="js-ckeditor" name="dm-ecom-product-description"></textarea>
-                            </div>
+
                             <div class="form-group">
                                 <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
                                 <!-- For more info and examples you can check out https://github.com/select2/select2 -->
@@ -34,7 +39,7 @@
                                 <select class="js-select2 form-control" id="dm-ecom-product-roomtype" name="dm-ecom-product-roomtype" style="width: 100%;" data-placeholder="Choose one..">
                                     <option value=""></option>
                                     @foreach($roomtype as $type)
-                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                        <option value="{{$type->id}}|{{$type->price}}" {{$type->id == $order->room->rooms_type_id ? 'selected' : ''}}>{{$type->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -43,28 +48,56 @@
                                 <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
                                 <!-- For more info and examples you can check out https://github.com/select2/select2 -->
                                 <label for="dm-ecom-product-category">Rooms</label>
-                                <select class="js-select2 form-control" id="dm-ecom-product-room" name="dm-ecom-product-room" style="width: 100%;" data-placeholder="Choose one.." onchange="roomChange(event)">
+                                <select class="js-select2 form-control" id="dm-ecom-product-room" name="dm-ecom-product-room" style="width: 100%;" data-placeholder="Choose one.." value="{{$order->room->name}}">
 
                                 </select>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="dm-ecom-product-price">Price in USD ($)</label>
-                                    <input type="text" class="form-control" id="dm-ecom-product-price" name="dm-ecom-product-price"
-                                           value="" onchange="priceChange(event)" disabled>
+                                    <label class="form-label" for="dm-project-check-in">Check-in Date</label>
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-in" name="check-in-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$date}}"
+                                           onchange="changeCheckin(event)">
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="dm-ecom-product-quantity">Quantity</label>
-                                    <input type="text" class="form-control" id="dm-ecom-product-quantity" name="dm-ecom-product-quantity" value="1" onchange="quantityChange(event)">
+                                    <label class="form-label" for="dm-project-check-out">Check-out Date</label>
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-out" name="check-out-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value=""
+                                           onchange="changeCheckout(event)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="dm-ecom-product-price">Room Price in USD ($)</label>
+                                    <input type="text" class="form-control" id="dm-ecom-product-price" name="dm-ecom-product-price"
+                                           value="0" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group d-flex" >
+                                @foreach($service_list as $service)
+                                    <div class="form-check mr-5">
+                                        <input type="checkbox" class="form-check-input" id="service{{$service->id}}" value="{{$service->id}}|{{$service->price}}" onchange="changeService(event, {{$service->id}})"
+                                               name="service[]" id-service="service{{$service->id}}">
+                                        <label class="form-check-label" for="exampleCheck1">{{$service->name}}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="dm-ecom-product-price">Service Price in USD ($)</label>
+                                    <input type="text" class="form-control" id="dm-ecom-product-service-price" name="dm-ecom-product-service-price"
+                                           value="0" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="dm-ecom-product-total">Total ($)</label>
-                                    <input type="text" class="form-control" id="dm-ecom-product-total" name="dm-ecom-product-total" value="0" disabled>
+                                    <input readonly type="text" class="form-control" id="dm-ecom-product-total" name="dm-ecom-product-total" value="0">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -110,6 +143,15 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
+        var total = document.querySelector('#dm-ecom-product-total');
+        var priceService = document.querySelector('#dm-ecom-product-service-price');
+        var inputValueRoom = document.querySelector('#dm-ecom-product-price');
+        var checkIn = document.querySelector('#dm-project-check-in');
+        var checkOut = document.querySelector('#dm-project-check-out');
+        var checkInDate;
+        var checkOutDate;
+        var diff;
+        var getDateBook;
         $(function (){
             $.ajaxSetup
             ({
@@ -117,13 +159,21 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             $("#dm-ecom-product-roomtype").change(function (event)
             {
                 event.preventDefault();
                 let route = '{{route('getRoom')}}'
                 let $this = $(this)
-                let rooms_type_id = $this.val()
-                console.log(rooms_type_id);
+                let value = $this.val().split('|');
+                let rooms_type_id = value[0];
+                let price = value[1];
+                inputValueRoom.value = price;
+                if(diff)
+                {
+                    total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+                }
+                console.log($this.val());
                 $.ajax({
                     method: 'GET',
                     url: route,
@@ -135,22 +185,58 @@
                         if (res.data){
                             let html = '<option value=""></option>'
                             $.each(res.data, function (index,value){
-                                html += "<option value='"+value.price+"'>" + value.name + "</option>"
+                                if(value.status != 1)
+                                {
+                                    html += "<option value='"+value.id+"'>" + value.name + "</option>"
+                                }
                             })
                             $('#dm-ecom-product-room').html('').append(html);
                         }
                     })
             });
         })
-        var inputValueRoom = document.querySelector('#dm-ecom-product-price');
-        var total = document.querySelector('#dm-ecom-product-total');
-        var quantity = document.querySelector('#dm-ecom-product-quantity');
-        function roomChange(e){
-            inputValueRoom.value = e.target.value;
-            total.value = Number(quantity.value)*Number(e.target.value);
+
+        function changeService(e, id){
+            let idService = '#service' + id;
+            console.log(e)
+            var checkboxService = document.querySelector(idService)
+            let value = e.target.value.split('|');
+            console.log(checkboxService.checked)
+            console.log(e.target.value)
+            if (checkboxService.checked)
+            {
+                priceService.value = Number(priceService.value) + Number(value[1]);
+                total.value = Number(total.value) + Number(value[1]);
+            }
+            else {
+                priceService.value = Number(priceService.value) - Number(value[1]);
+                total.value = Number(total.value) - Number(value[1]);
+            }
         }
-        function quantityChange(e){
-            total.value = Number(e.target.value)*Number(inputValueRoom.value);
+
+        function changeCheckin(e){
+            checkInDate = new Date(checkIn.value);
+            checkOutDate = new Date(checkOut.value);
+            if(checkOut.value != null){
+                diff = Math.abs(checkOutDate - checkInDate);
+                console.log(diff);
+                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                console.log(getDateBook)
+                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+            }
+
+        }
+
+        function changeCheckout(e){
+            checkOutDate = new Date(checkOut.value);
+            checkInDate = new Date(checkIn.value);
+            if(checkIn.value != null){
+                diff = Math.abs(checkOutDate - checkInDate);
+                console.log(diff);
+                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                console.log(getDateBook)
+                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+            }
         }
 
     </script>

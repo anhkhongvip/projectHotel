@@ -22,14 +22,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'],function(){
-    //Route::get("/room", App\Http\Controllers\RoomController::class);
-    Route::get('/room', [App\Http\Controllers\RoomController::class, 'indexAdmin'])->name('roomAdmin');
+//    Route::get("/room", App\Http\Controllers\RoomController::class);
+//    Route::get('/room', [App\Http\Controllers\RoomController::class, 'indexAdmin'])->name('roomAdmin');
     Route::resource('booking',App\Http\Controllers\BookingController::class);
     Route::resource('blog',App\Http\Controllers\BlogController::class);
     Route::resource('account',App\Http\Controllers\AccountController::class);
+    Route::resource('roomtype',App\Http\Controllers\RoomTypeController::class);
+    Route::resource('room',App\Http\Controllers\RoomController::class);
+
 });
 
 Route::get('/getroom', [App\Http\Controllers\BookingController::class, 'getRoom'])->name('getRoom');
+Route::get('/detail/{id}', [App\Http\Controllers\BookingController::class, 'detail'])->name('detail');
 
 
 

@@ -5,23 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\rooms_type;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class RoomTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        //return view('admin.room.index');
-        $room = room::find($id);
-        return view('admin.room.room_detail.index')->with(['room' => $room]);
-    }
-
-    public function indexAdmin()
-    {
-
+        $roomtype = rooms_type::all();
+        return view('admin.room.index')->with(['roomtype' => $roomtype]);
     }
 
     /**
@@ -31,7 +25,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

@@ -13,4 +13,10 @@ class room extends Model
 //        return $this->hasOne('App\Models\rooms_type');
 //    }
 
+    public function order(){
+        return $this->hasOne('App\Models\order');
+    }
+
+
+
 }

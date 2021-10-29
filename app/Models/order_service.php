@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class order_service extends Model
 {
     use HasFactory;
+
+
 }

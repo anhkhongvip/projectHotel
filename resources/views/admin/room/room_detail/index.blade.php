@@ -115,50 +115,50 @@
                         </thead>
                         <tbody>
                         @foreach($lsOrder as $order)
-                        <tr>
-                            <td class="text-center">
-                                <a class="font-w600" href="be_pages_ecom_order.html">
-                                    <strong>{{$order->id}}</strong>
-                                </a>
-                            </td>
-                            <td class="d-none d-sm-table-cell text-center">{{$order->check_out_date}}</td>
-                            <td class="font-size-base">
-                                @if($order->status == 0)
-                                    <span class="badge badge-pill badge-warning">OPEN</span>
-                                @elseif($order->status == 1)
-                                    <span class="badge badge-pill badge-success">CLOSED</span>
-                                @else
-                                    <span class="badge badge-pill badge-danger">CANCEL</span>
-                                @endif
-                            </td>
-                            <td class="d-none d-xl-table-cell">
-                                <a class="font-w600" href="be_pages_ecom_customer.html">{{$order->customer->name}}</a>
-                            </td>
-                            <td class="d-none d-xl-table-cell text-center">
-                                <a class="font-w600" href="be_pages_ecom_order.html">{{$order->room->name}}</a>
-                            </td>
-                            <td class="d-none d-sm-table-cell text-right">
-                                <strong>{{$order->total}}</strong>
-                            </td>
-{{--                            <td class="text-center font-size-base">--}}
-{{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('detail')}}">--}}
-{{--                                    <i class="fa fa-fw fa-eye"></i>--}}
-{{--                                </a>--}}
-{{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('booking.edit', $order->id)}}">--}}
-{{--                                    <i class="fas fa-pencil-alt"></i>--}}
-{{--                                </a>--}}
-{{--                            </td>--}}
-                            <td class="text-center font-size-base">
-                                <a class="btn btn-sm btn-alt-secondary" href="{{route('detail', $order->id)}}">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                                @if($order->status == 0 || $order->status == 1)
-                                    <button class="btn btn-sm btn-alt-secondary" data-toggle="modal" data-target="#exampleModal" data-orderid="{{$order->id}}" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button>
-                                @endif
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <a class="font-w600" href="be_pages_ecom_order.html">
+                                        <strong>{{$order->id}}</strong>
+                                    </a>
+                                </td>
+                                <td class="d-none d-sm-table-cell text-center">{{$order->check_out_date}}</td>
+                                <td class="font-size-base">
+                                    @if($order->status == 0)
+                                        <span class="badge badge-pill badge-warning">OPEN</span>
+                                    @elseif($order->status == 1)
+                                        <span class="badge badge-pill badge-success">CLOSED</span>
+                                    @else
+                                        <span class="badge badge-pill badge-danger">CANCEL</span>
+                                    @endif
+                                </td>
+                                <td class="d-none d-xl-table-cell">
+                                    <a class="font-w600" href="be_pages_ecom_customer.html">{{$order->customer->name}}</a>
+                                </td>
+                                <td class="d-none d-xl-table-cell text-center">
+                                    <a class="font-w600" href="be_pages_ecom_order.html">{{$order->room->name}}</a>
+                                </td>
+                                <td class="d-none d-sm-table-cell text-right">
+                                    <strong>{{$order->total}}</strong>
+                                </td>
+                                {{--                            <td class="text-center font-size-base">--}}
+                                {{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('detail')}}">--}}
+                                {{--                                    <i class="fa fa-fw fa-eye"></i>--}}
+                                {{--                                </a>--}}
+                                {{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('booking.edit', $order->id)}}">--}}
+                                {{--                                    <i class="fas fa-pencil-alt"></i>--}}
+                                {{--                                </a>--}}
+                                {{--                            </td>--}}
+                                <td class="text-center font-size-base">
+                                    <a class="btn btn-sm btn-alt-secondary" href="{{route('detail', $order->id)}}">
+                                        <i class="fa fa-fw fa-eye"></i>
+                                    </a>
+                                    @if($order->status == 0 || $order->status == 1)
+                                        <button class="btn btn-sm btn-alt-secondary" data-toggle="modal" data-target="#exampleModal" data-orderid="{{$order->id}}" href="#">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                    @endif
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

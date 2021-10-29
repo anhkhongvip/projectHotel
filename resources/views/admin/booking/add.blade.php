@@ -3,6 +3,13 @@
     <!-- Page Content -->
     <div class="content">
         <!-- Info -->
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $err)
+                    <p>{{$err}}</p>
+                @endforeach
+            </div>
+        @endif
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Add Room Booking</h3>
@@ -47,14 +54,16 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="dm-project-check-in">Check-in Date</label>
-                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-in" name="dm-project-check-in" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$date}}">
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-in" name="check-in-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$date}}"
+                                        onchange="changeCheckin(event)">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="dm-project-check-out">Check-out Date</label>
-                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-out" name="dm-project-check-out" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="">
+                                    <input type="text" class="js-datepicker form-control" id="dm-project-check-out" name="check-out-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value=""
+                                        onchange="changeCheckout(event)">
                                 </div>
                             </div>
 
@@ -62,7 +71,7 @@
                                 <div class="col-md-6">
                                     <label for="dm-ecom-product-price">Room Price in USD ($)</label>
                                     <input type="text" class="form-control" id="dm-ecom-product-price" name="dm-ecom-product-price"
-                                           value="0" disabled>
+                                           value="0" readonly>
                                 </div>
                             </div>
 
@@ -80,13 +89,13 @@
                                 <div class="col-md-6">
                                     <label for="dm-ecom-product-price">Service Price in USD ($)</label>
                                     <input type="text" class="form-control" id="dm-ecom-product-service-price" name="dm-ecom-product-service-price"
-                                           value="0" disabled>
+                                           value="0" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="dm-ecom-product-total">Total ($)</label>
-                                    <input type="text" class="form-control" id="dm-ecom-product-total" name="dm-ecom-product-total" value="0" disabled>
+                                    <input readonly type="text" class="form-control" id="dm-ecom-product-total" name="dm-ecom-product-total" value="0">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -135,6 +144,12 @@
         var total = document.querySelector('#dm-ecom-product-total');
         var priceService = document.querySelector('#dm-ecom-product-service-price');
         var inputValueRoom = document.querySelector('#dm-ecom-product-price');
+        var checkIn = document.querySelector('#dm-project-check-in');
+        var checkOut = document.querySelector('#dm-project-check-out');
+        var checkInDate;
+        var checkOutDate;
+        var diff;
+        var getDateBook;
         $(function (){
             $.ajaxSetup
             ({
@@ -152,7 +167,10 @@
                 let rooms_type_id = value[0];
                 let price = value[1];
                 inputValueRoom.value = price;
-                total.value = Number(inputValueRoom.value) + Number(priceService.value);
+                if(diff)
+                {
+                    total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+                }
                 console.log($this.val());
                 $.ajax({
                     method: 'GET',
@@ -191,6 +209,31 @@
             else {
                 priceService.value = Number(priceService.value) - Number(value[1]);
                 total.value = Number(total.value) - Number(value[1]);
+            }
+        }
+
+        function changeCheckin(e){
+            checkInDate = new Date(checkIn.value);
+            checkOutDate = new Date(checkOut.value);
+            if(checkOut.value != null){
+                diff = Math.abs(checkOutDate - checkInDate);
+                console.log(diff);
+                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                console.log(getDateBook)
+                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+            }
+
+        }
+
+        function changeCheckout(e){
+            checkOutDate = new Date(checkOut.value);
+            checkInDate = new Date(checkIn.value);
+            if(checkIn.value != null){
+                diff = Math.abs(checkOutDate - checkInDate);
+                console.log(diff);
+                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                console.log(getDateBook)
+                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
             }
         }
 

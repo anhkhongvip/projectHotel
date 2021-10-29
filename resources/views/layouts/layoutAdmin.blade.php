@@ -614,7 +614,7 @@ MAIN CONTENT LAYOUT
                         </a>
                         <ul class="nav-main-submenu">
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{route('roomAdmin')}}">
+                                <a class="nav-main-link" href="{{route('roomtype.index')}}">
                                     <span class="nav-main-link-name">View All Room</span>
                                 </a>
                             </li>
