@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\customer;
+use App\Models\order;
+use App\Models\room;
+use App\Models\room_image;
 use App\Models\rooms_type;
 use Illuminate\Http\Request;
 
@@ -12,16 +16,16 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         //return view('admin.room.index');
-        $room = room::find($id);
-        return view('admin.room.room_detail.index')->with(['room' => $room]);
+
     }
 
-    public function indexAdmin()
+    public function indexAdmin(Request $request, $id)
     {
-
+        $lsRoom = room::where('rooms_type_id','=', $id)->get();
+        return view('admin.room.room_detail.index')->with(['lsRoom' => $lsRoom, 'id' => $id]);
     }
 
     /**
@@ -31,7 +35,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        $roomtype = rooms_type::all();
+        return view('admin.room.room_detail.add')->with(['roomtype' => $roomtype]);
     }
 
     /**
@@ -42,7 +47,36 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $room = new room();
+        $room->name = $request->input('room-name');
+        $room->description = $request->input('room-description');
+        $room->rooms_type_id = $request->input('room_type');
+        $room->save();
+        $newest_room = room::orderBy('created_at', 'desc')->first();
+
+        foreach ($request->images as $image) {
+            $imagePath = "";
+
+            if ($request->hasFile("images")){
+                $imagePath = $image->store('room-img');
+                $imagePath = 'img/'.$imagePath;
+                $room_image = new room_image();
+                $room_image->rooms_id = $newest_room->id;
+                $room_image->image = $imagePath;
+                $room_image->save();
+            }
+        }
+        $request->session()->flash('msg', 'Add room successfully.');
+        return redirect(route('rooms.create'));
+
+    }
+
+    public function getRoomDetail(Request $request){
+        $id = $request->id;
+        $room = room::find($id);
+        $image_list = room_image::where('rooms_id', '=', $id)->get();
+        return response(['room' => $room, 'image_list' => $image_list]);
+
     }
 
     /**
@@ -64,7 +98,9 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        $room = room::find($id);
+        $roomtype = rooms_type::all();
+        return view('admin.room.room_detail.edit')->with(['roomtype' => $roomtype, 'room' => $room]);
     }
 
     /**
@@ -76,7 +112,28 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $room = room::find($id);
+        $room->name = $request->input('room-name');
+        $room->description = $request->input('room-description');
+        $room->rooms_type_id = $request->input('room_type');
+        $room->save();
+        $newest_room = room::orderBy('created_at', 'desc')->first();
+
+        foreach ($request->images as $image) {
+            $imagePath = "";
+
+            if ($request->hasFile("images")){
+                $imagePath = $image->store('room-img');
+                $imagePath = 'img/'.$imagePath;
+                $room_image = new room_image();
+                $room_image->rooms_id = $newest_room->id;
+                $room_image->image = $imagePath;
+                $room_image->save();
+            }
+        }
+//        $request->session()->flash('msg', 'Update room successfully.');
+        return redirect(route('rooms.edit', $room->id));
+
     }
 
     /**
@@ -89,4 +146,6 @@ class RoomController extends Controller
     {
         //
     }
+
+
 }

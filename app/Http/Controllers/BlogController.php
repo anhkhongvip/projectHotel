@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\post_image;
+use App\Models\posts;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,7 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('admin.blog.index');
+        $lsBlog = posts::paginate(10);
+        return view('admin.blog.index')->with(['lsBlog' => $lsBlog]);
     }
 
     /**
@@ -34,7 +37,26 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new posts();
+        $post->title = $request->input('title');
+        $post->content = $request->input('excerpt');
+        $post->post_detail = $request->input('body');
+        $post->save();
+        $newest_post = posts::orderBy('created_at', 'desc')->first();
+
+        foreach ($request->images as $image) {
+            $imagePath = "";
+
+            if ($request->hasFile("images")){
+                $imagePath = $image->store('post-img');
+                $imagePath = 'img/'.$imagePath;
+                $post_image = new post_image();
+                $post_image->post_id = $newest_post->id;
+                $post_image->image = $imagePath;
+                $post_image->save();
+            }
+        }
+        return redirect(route('blog.create'));
     }
 
     /**
@@ -56,7 +78,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = posts::find($id);
+        return view('admin.blog.edit')->with(['post' => $post]);
     }
 
     /**
@@ -68,7 +91,26 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = posts::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('excerpt');
+        $post->post_detail = $request->input('body');
+        $post->save();
+        $newest_post = posts::orderBy('created_at', 'desc')->first();
+
+        foreach ($request->images as $image) {
+            $imagePath = "";
+
+            if ($request->hasFile("images")){
+                $imagePath = $image->store('post-img');
+                $imagePath = 'img/'.$imagePath;
+                $post_image = new post_image();
+                $post_image->post_id = $newest_post->id;
+                $post_image->image = $imagePath;
+                $post_image->save();
+            }
+        }
+        return redirect(route('blog.edit', $post->id));
     }
 
     /**

@@ -1,15 +1,74 @@
 @extends('layouts.layoutAdmin')
 @section('content')
+    <aside id="side-overlay">
+        <div class="content-header bg-dark">
+            <div class="fw-semibold text-white" id="roomNameDetail"></div>
+            <a class="ms-auto text-white" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_close">
+                <i class="fa fa-times-circle"></i>
+            </a>
+        </div>
+        <div class="js-slider slick-nav-black slick-nav-hover slick-dotted-inner slick-dotted-white img-fluid-100" data-dots="true" data-arrows="true" data-autoplay="true" data-autoplay-speed="3000">
+            <div>
+                <img class="img-fluid" src="assets/media/photos/photo26@2x.jpg" alt="">
+            </div>
+            <div>
+                <img class="img-fluid" src="assets/media/photos/photo28@2x.jpg" alt="">
+            </div>
+            <div>
+                <img class="img-fluid" src="assets/media/photos/photo29@2x.jpg" alt="">
+            </div>
+            <div>
+                <img class="img-fluid" src="assets/media/photos/photo30@2x.jpg" alt="">
+            </div>
+        </div>
+        <div class="js-slider slick-nav-black slick-nav-hover slick-dotted-inner slick-dotted-white img-fluid-100"
+             data-dots="true" data-arrows="true" data-autoplay="true" data-autoplay-speed="3000" id="roomSlideImage"></div>
+        <div class="content-side content-side-full">
+            <div class="text-warning text-center push">
+                <i class="fa fa-fw fa-star"></i>
+                <i class="fa fa-fw fa-star"></i>
+                <i class="fa fa-fw fa-star"></i>
+                <i class="fa fa-fw fa-star"></i>
+                <i class="fa fa-fw fa-star"></i>
+                <span class="text-muted">(19)</span>
+            </div>
+            <div class="row text-center border-top border-bottom bg-body-light pull-x push">
+                <div class="col-6 border-bottom border-end">
+                    <p class="py-3 mb-0">
+                        <i class="fa fa-fw fa-bed text-muted me-1"></i> <strong>2</strong> Bedrooms
+                    </p>
+                </div>
+                <div class="col-6 border-bottom">
+                    <p class="py-3 mb-0">
+                        <i class="fa fa-fw fa-bath text-muted me-1"></i> <strong>1</strong> Bathroom
+                    </p>
+                </div>
+                <div class="col-6 border-end">
+                    <p class="py-3 mb-0">
+                        <i class="fa fa-fw fa-check text-success me-1"></i> Wifi
+                    </p>
+                </div>
+                <div class="col-6">
+                    <p class="py-3 mb-0">
+                        <i class="fa fa-fw fa-check text-success me-1"></i> Breakfast
+                    </p>
+                </div>
+            </div>
+            <p class="fs-sm fw-medium" id="roomDescriptionDetail"></p>
+        </div>
+    </aside>
     <!-- Page Content -->
     <div class="content">
         <!-- Quick Overview -->
         <div class="row row-deck">
             <div class="col-6 col-lg-3">
-                <a class="block block-rounded block-link-shadow text-center" href="be_pages_ecom_orders.html">
+                <a class="block block-rounded block-link-shadow text-center" href="#">
                     <div class="block-content py-5">
-                        <div class="font-size-h3 font-w600 text-primary mb-1">78</div>
-                        <p class="font-w600 font-size-sm text-muted text-uppercase mb-0">
-                            Pending
+                        <div class="font-size-h3 font-w600 text-success mb-1">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <p class="font-w600 font-size-sm text-success text-uppercase mb-0">
+                            Add New
                         </p>
                     </div>
                 </a>
@@ -50,7 +109,7 @@
         <!-- All Orders -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">All Orders</h3>
+                <h3 class="block-title">All Rooms</h3>
                 <div class="block-options">
                     <div class="dropdown">
                         <button type="button" class="btn btn-light" id="dropdown-ecom-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,7 +150,7 @@
                 <form action="{{route('booking.index')}}" method="GET" class="mb-4">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-alt" id="dm-ecom-orders-search" name="search_name" placeholder="Search all orders..">
+                        <input type="text" class="form-control form-control-alt" id="dm-ecom-orders-search" name="search_name" placeholder="Search all rooms..">
                     </div>
                     <input type="submit" class="btn btn-alt-primary" value="Search">
                 </form>
@@ -104,59 +163,32 @@
                     <table class="table table-borderless table-striped table-vcenter font-size-sm">
                         <thead>
                         <tr>
-                            <th class="text-center" style="width: 100px;">ID</th>
-                            <th class="d-none d-sm-table-cell text-center">Check-out Date</th>
-                            <th>Status</th>
-                            <th class="d-none d-xl-table-cell">Customer</th>
-                            <th class="d-none d-xl-table-cell text-center">Room</th>
-                            <th class="d-none d-sm-table-cell text-right">Total</th>
+                            <th class="text-center d-none d-xl-table-cell">Room's type</th>
+                            <th class="d-none d-sm-table-cell text-center">Name</th>
                             <th class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($lsOrder as $order)
+                        @foreach($lsRoom as $room)
                             <tr>
                                 <td class="text-center">
                                     <a class="font-w600" href="be_pages_ecom_order.html">
-                                        <strong>{{$order->id}}</strong>
+                                        <strong>{{$room->rooms_type->name}}</strong>
                                     </a>
                                 </td>
-                                <td class="d-none d-sm-table-cell text-center">{{$order->check_out_date}}</td>
-                                <td class="font-size-base">
-                                    @if($order->status == 0)
-                                        <span class="badge badge-pill badge-warning">OPEN</span>
-                                    @elseif($order->status == 1)
-                                        <span class="badge badge-pill badge-success">CLOSED</span>
-                                    @else
-                                        <span class="badge badge-pill badge-danger">CANCEL</span>
-                                    @endif
-                                </td>
-                                <td class="d-none d-xl-table-cell">
-                                    <a class="font-w600" href="be_pages_ecom_customer.html">{{$order->customer->name}}</a>
-                                </td>
-                                <td class="d-none d-xl-table-cell text-center">
-                                    <a class="font-w600" href="be_pages_ecom_order.html">{{$order->room->name}}</a>
-                                </td>
-                                <td class="d-none d-sm-table-cell text-right">
-                                    <strong>{{$order->total}}</strong>
-                                </td>
-                                {{--                            <td class="text-center font-size-base">--}}
-                                {{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('detail')}}">--}}
-                                {{--                                    <i class="fa fa-fw fa-eye"></i>--}}
-                                {{--                                </a>--}}
-                                {{--                                <a class="btn btn-sm btn-alt-secondary" href="{{route('booking.edit', $order->id)}}">--}}
-                                {{--                                    <i class="fas fa-pencil-alt"></i>--}}
-                                {{--                                </a>--}}
-                                {{--                            </td>--}}
+                                <td class="d-none d-sm-table-cell text-center">{{$room->name}}</td>
                                 <td class="text-center font-size-base">
-                                    <a class="btn btn-sm btn-alt-secondary" href="{{route('detail', $order->id)}}">
-                                        <i class="fa fa-fw fa-eye"></i>
+                                    <a class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="side_overlay_open" href="javascript:void(0)">
+                                        <i class="fa fa-fw fa-eye" id="getRoom" OnClick = "getRoomDetail(event, {{$room->id}})" ></i>
                                     </a>
-                                    @if($order->status == 0 || $order->status == 1)
-                                        <button class="btn btn-sm btn-alt-secondary" data-toggle="modal" data-target="#exampleModal" data-orderid="{{$order->id}}" href="#">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </button>
-                                    @endif
+{{--                                    @if($order->status == 0 || $order->status == 1)--}}
+{{--                                        <button class="btn btn-sm btn-alt-secondary" data-toggle="modal" data-target="#exampleModal" data-orderid="{{$order->id}}" href="#">--}}
+{{--                                            <i class="fas fa-pencil-alt"></i>--}}
+{{--                                        </button>--}}
+{{--                                    @endif--}}
+                                    <a class="btn btn-sm btn-alt-secondary" href="{{route('rooms.edit', $room->id)}}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -167,7 +199,7 @@
 
                 <!-- Pagination -->
                 <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
-                    {{$lsOrder->links("pagination::bootstrap-4")}}
+
                 </div>
                 <!-- END Pagination -->
             </div>
@@ -175,66 +207,44 @@
         <!-- END All Orders -->
     </div>
     <!-- END Page Content -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Status:</label>
-                            <input type="hidden" name="selected_orderid" id="selected_orderid">
-                            <select name="new_status" class="form-control" id="new_status">
-                                <option value="0">OPEN</option>
-                                <option value="1">CLOSED</option>
-                                <option value="2">CANCEL</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="Change">Change</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
-            $('#exampleModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('orderid') // Extract info from data-* attributes
-                var modal = $(this)
-                modal.find('#selected_orderid').val(recipient)
-            });
-
-            $("#Change").click(function() {
-                var data = {
-                    'id' : $("#selected_orderid").val(),
-                    'status' : $("#new_status").val(),
-                    "_token": "{{ csrf_token() }}"
+        function getRoomDetail(e, id) {
+            $.ajaxSetup
+            ({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-
-                $.get({
-                    url: '/api/admin/booking/changeStatus',
-                    data: data,
-                    success: function(response) {
-                        alert(response.desc);
-                        location.reload();
-                    },
-                    error: function(response) {
-                        alert(response);
-                    }
-                });
             });
-        });
+
+
+                console.log(id);
+                let route = '{{route('getRoomDetail')}}';
+                $.ajax({
+                    method: 'GET',
+                    url: route,
+                    data: {
+                        id: id,
+                    },
+                    success : function (res){
+                        console.log(res);
+                        $("#roomNameDetail").html(res.room.name);
+                        $("#roomDescriptionDetail").html(res.room.description)
+                        let list_img = "";
+                        $.each(res.image_list, function(index, value){
+                            list_img += "<div><img class=\"img-fluid\" src=\"http://127.0.0.1:8000/"+value.image+"\" alt=\"\"></div>"
+                        })
+                        $('#roomSlideImage').html('').append(list_img);
+                        $('#roomSlideImage').slick({
+                            dots: true,
+                            infinite: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        });
+                    }
+
+                })
+
+        }
     </script>
 @endsection

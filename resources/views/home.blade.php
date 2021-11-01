@@ -42,7 +42,7 @@
                             <div class="item rounded-lg bg-body-dark mx-auto my-3">
                                 <i class="fa fa-users text-muted"></i>
                             </div>
-                            <div class="text-black font-size-h1 font-w700">2,388</div>
+                            <div class="text-black font-size-h1 font-w700">{{$total_user}}</div>
                             <div class="text-muted mb-3">Registered Users</div>
                             <div class="d-inline-block px-3 py-1 rounded-lg font-size-sm font-w600 text-success bg-success-lighter">
                                 <i class="fa fa-caret-up mr-1"></i>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                            <a class="font-w500" href="javascript:void(0)">
+                            <a class="font-w500" href="{{route('account.index')}}">
                                 View all users
                                 <i class="fa fa-arrow-right ml-1 opacity-25"></i>
                             </a>
@@ -84,16 +84,16 @@
                             <div class="item rounded-lg bg-body-dark mx-auto my-3">
                                 <i class="fa fa-chart-line text-muted"></i>
                             </div>
-                            <div class="text-black font-size-h1 font-w700">386</div>
-                            <div class="text-muted mb-3">Confirmed Sales</div>
+                            <div class="text-black font-size-h1 font-w700">{{$complete_order}}</div>
+                            <div class="text-muted mb-3">Confirmed Orders</div>
                             <div class="d-inline-block px-3 py-1 rounded-lg font-size-sm font-w600 text-success bg-success-lighter">
                                 <i class="fa fa-caret-up mr-1"></i>
                                 7.9%
                             </div>
                         </div>
                         <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                            <a class="font-w500" href="javascript:void(0)">
-                                View all sales
+                            <a class="font-w500" href="{{route('booking.index')}}">
+                                View all orders
                                 <i class="fa fa-arrow-right ml-1 opacity-25"></i>
                             </a>
                         </div>
@@ -105,19 +105,14 @@
                             <div class="item rounded-lg bg-body-dark mx-auto my-3">
                                 <i class="fa fa-wallet text-muted"></i>
                             </div>
-                            <div class="text-black font-size-h1 font-w700">$4,920</div>
+                            <div class="text-black font-size-h1 font-w700">${{$total_earn_order[0]->total_money}}</div>
                             <div class="text-muted mb-3">Total Earnings</div>
                             <div class="d-inline-block px-3 py-1 rounded-lg font-size-sm font-w600 text-danger bg-danger-lighter">
                                 <i class="fa fa-caret-down mr-1"></i>
                                 0.3%
                             </div>
                         </div>
-                        <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                            <a class="font-w500" href="javascript:void(0)">
-                                Withdrawal options
-                                <i class="fa fa-arrow-right ml-1 opacity-25"></i>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -155,8 +150,8 @@
                                     </div>
                                 </div>
                                 <div class="py-3">
-                                    <div class="text-black font-size-h1 font-w700">65</div>
-                                    <div class="font-w600">New products added</div>
+                                    <div class="text-black font-size-h1 font-w700">{{$open_order}}</div>
+                                    <div class="font-w600">New orders added</div>
                                     <div class="py-3 d-flex align-items-center">
                                         <div class="bg-success-lighter p-2 rounded mr-3">
                                             <i class="fa fa-fw fa-arrow-up text-success"></i>
@@ -218,28 +213,38 @@
                         </div>
                         <div class="block-content">
                             <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm">
+
                                 <thead>
                                 <tr class="text-uppercase">
-                                    <th>Product</th>
-                                    <th class="d-none d-xl-table-cell">Date</th>
+                                    <th>Customer</th>
+                                    <th class="d-none d-xl-table-cell">Check-out Date</th>
                                     <th>Status</th>
-                                    <th class="d-none d-sm-table-cell text-right" style="width: 120px;">Price</th>
+                                    <th class="d-none d-sm-table-cell text-right" style="width: 120px;">Total</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($lsOrder as $order)
                                 <tr>
                                     <td>
-                                        <span class="font-w600">iPhone 11 Pro</span>
+                                        <span class="font-w600">{{$order->customer->name}}</span>
                                     </td>
                                     <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">today</span>
+                                        <span class="font-size-sm text-muted">{{$order->check_out_date}}</span>
                                     </td>
                                     <td>
-                                        <span class="font-w600 text-warning">Pending..</span>
+                                        <span class="font-w600 text-warning">
+                                            @if($order->status == 0)
+                                                <span class="badge badge-pill badge-warning">OPEN</span>
+                                            @elseif($order->status == 1)
+                                                <span class="badge badge-pill badge-success">CLOSED</span>
+                                            @else
+                                                <span class="badge badge-pill badge-danger">CANCEL</span>
+                                            @endif
+                                        </span>
                                     </td>
                                     <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $1199,99
+                                        {{$order->total}}
                                     </td>
                                     <td class="text-center text-nowrap font-w500">
                                         <a href="javascript:void(0)">
@@ -247,144 +252,12 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">MacBook Pro 15"</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">today</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-warning">Pending..</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $2.299,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">Nvidia GTX 2080 Ti</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">today</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-warning">Pending..</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $1200,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">Playstation 4 Pro</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">today</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-danger">Canceled</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $399,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">Nintendo Switch</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">yesterday</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-success">Completed</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $349,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">iPhone 11</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">yesterday</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-success">Completed</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $999,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">Airpods Pro</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">yesterday</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-success">Completed</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $39,99
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-w600">Xbox One X</span>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        <span class="font-size-sm text-muted">yesterday</span>
-                                    </td>
-                                    <td>
-                                        <span class="font-w600 text-success">Completed</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell text-right font-w500">
-                                        $499,00
-                                    </td>
-                                    <td class="text-center text-nowrap font-w500">
-                                        <a href="javascript:void(0)">
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                            <a class="font-w500" href="javascript:void(0)">
+                            <a class="font-w500" href="{{route('booking.index')}}">
                                 View all orders
                                 <i class="fa fa-arrow-right ml-1 opacity-25"></i>
                             </a>
@@ -398,7 +271,7 @@
                         <div class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
                             <div class="mr-3">
                                 <p class="font-size-h3 font-w700 mb-0">
-                                    35,698
+                                    {{$complete_order}}
                                 </p>
                                 <p class="text-muted mb-0">
                                     Completed orders
@@ -408,12 +281,12 @@
                                 <i class="fa fa-check text-muted"></i>
                             </div>
                         </div>
-                        <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                            <a class="font-w500" href="javascript:void(0)">
-                                View Archive
-                                <i class="fa fa-arrow-right ml-1 opacity-25"></i>
-                            </a>
-                        </div>
+{{--                        <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">--}}
+{{--                            <a class="font-w500" href="javascript:void(0)">--}}
+{{--                                View Archive--}}
+{{--                                <i class="fa fa-arrow-right ml-1 opacity-25"></i>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                     </div>
                     <div class="block block-rounded text-center d-flex flex-column flex-grow-1">
                         <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
@@ -421,18 +294,12 @@
                                 <div class="item rounded-lg bg-body-dark mx-auto my-3">
                                     <i class="fa fa-archive text-muted"></i>
                                 </div>
-                                <div class="text-black font-size-h1 font-w700">75</div>
-                                <div class="text-muted mb-3">Products out of stock</div>
-                                <div class="d-inline-block px-3 py-1 rounded-lg font-size-sm font-w600 text-warning bg-warning-lighter">
-                                    5% of portfolio
-                                </div>
+                                <div class="text-black font-size-h1 font-w700">{{$cancel_order}}</div>
+                                <div class="text-muted mb-3">Order cancel</div>
+{{--                                <div class="d-inline-block px-3 py-1 rounded-lg font-size-sm font-w600 text-warning bg-warning-lighter">--}}
+{{--                                    5% of portfolio--}}
+{{--                                </div>--}}
                             </div>
-                        </div>
-                        <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                            <a class="font-w500" href="javascript:void(0)">
-                                Order supplies
-                                <i class="fa fa-arrow-right ml-1 opacity-25"></i>
-                            </a>
                         </div>
                     </div>
                     <!-- END Stats -->

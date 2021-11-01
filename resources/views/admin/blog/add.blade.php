@@ -20,7 +20,8 @@
     <!-- Page Content -->
     <div class="content content-full content-boxed">
         <!-- New Post -->
-        <form action="be_pages_blog_post_add.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+        <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="block">
                 <div class="block-header block-header-default">
                     <a class="btn btn-light" href="be_pages_blog_post_manage.html">
@@ -38,11 +39,11 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label for="dm-post-add-title">Title</label>
-                                <input type="text" class="form-control" id="dm-post-add-title" name="dm-post-add-title" placeholder="Enter a title..">
+                                <input type="text" class="form-control" id="dm-post-add-title" name="title" placeholder="Enter a title..">
                             </div>
                             <div class="form-group">
                                 <label for="dm-post-add-excerpt">Excerpt</label>
-                                <textarea class="form-control" id="dm-post-add-excerpt" name="dm-post-add-excerpt" rows="3" placeholder="Enter an excerpt.."></textarea>
+                                <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt" rows="3" placeholder="Enter an excerpt.."></textarea>
                                 <div class="form-text text-muted font-size-sm font-italic">Visible on blog post list as a small description of the post.</div>
                             </div>
                             <div class="form-group row">
@@ -50,7 +51,7 @@
                                     <label>Featured Image</label>
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                        <input type="file" class="custom-file-input" id="dm-post-add-image" name="dm-post-add-image" data-toggle="custom-file-input">
+                                        <input type="file" class="custom-file-input" id="dm-post-add-image" name="images[]" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="dm-post-add-image">Choose an image</label>
                                     </div>
                                 </div>
@@ -59,7 +60,7 @@
                                 <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.ckeditor()) -->
                                 <!-- For more info and examples you can check out http://ckeditor.com -->
                                 <label>Body</label>
-                                <textarea id="js-ckeditor" name="dm-post-add-body"></textarea>
+                                <textarea id="js-ckeditor" name="body"></textarea>
                             </div>
                         </div>
                     </div>

@@ -154,6 +154,11 @@ MAIN CONTENT LAYOUT
                                         <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
                                     </button>
                                 </div>
+                                <div class="font-w600 font-size-sm text-center">
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}"><i class="far fa-registered"></i> {{ __('Register') }}</a>
+                                    @endif
+                                </div>
                             </form>
                             <!-- END Sign In Form -->
                         </div>

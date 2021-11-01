@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('admin/booking/changeStatus', [App\Http\Controllers\BookingController::class, 'changeStatus']);
+Route::get('admin/account/changeRole', [App\Http\Controllers\AccountController::class, 'changeRole']);

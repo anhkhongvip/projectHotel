@@ -51,40 +51,19 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">All Orders</h3>
-                <div class="block-options">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-light" id="dropdown-ecom-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filters
-                            <i class="fa fa-angle-down ml-1"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-ecom-filters">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Pending..
-                                <span class="badge badge-primary badge-pill">78</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Processing
-                                <span class="badge badge-secondary badge-pill">12</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                For Delivery
-                                <span class="badge badge-secondary badge-pill">20</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Canceled
-                                <span class="badge badge-secondary badge-pill">5</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Delivered
-                                <span class="badge badge-secondary badge-pill">280</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                All
-                                <span class="badge badge-secondary badge-pill">19k</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="block-options">--}}
+{{--                    <div class="dropdown">--}}
+{{--                        <button type="button" class="btn btn-light" id="dropdown-ecom-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            Filters--}}
+{{--                            <i class="fa fa-angle-down ml-1"></i>--}}
+{{--                        </button>--}}
+{{--                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-ecom-filters">--}}
+{{--                            <a class="dropdown-item d-flex justify-content-end" href="javascript:void(0)">--}}
+{{--                                Pending..--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <div class="block-content bg-body-dark">
                 <!-- Search Form -->
@@ -166,7 +145,7 @@
                 <!-- END All Orders Table -->
 
                 <!-- Pagination -->
-                <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
+                <div class="shop_pagination_area wow fadeInUp d-flex justify-content-end" data-wow-delay="1.1s">
                     {{$lsOrder->links("pagination::bootstrap-4")}}
                 </div>
                 <!-- END Pagination -->

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\customer;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -13,7 +15,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('admin.account.index');
+        $lsAccount = User::paginate(10);
+        return view('admin.account.index')->with(['lsAccount' => $lsAccount]);
     }
 
     /**
@@ -80,5 +83,17 @@ class AccountController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeRole(Request $request){
+        $id = $request->id;
+        $role_id = $request->role_id;
+        $account = User::find($id);
+        $account->role_id = $role_id;
+        $account->save();
+        return response()->json([
+            'status' => 'OK',
+            'desc' => 'Change role success',
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\DB;
 use App\Models\customer;
 use App\Models\order;
 use App\Models\order_room;
@@ -27,11 +27,11 @@ class BookingController extends Controller
         if (isset($search_name)){
             $lsOrder = order::query()
                             ->Where('id','like','%'.$search_name.'%')
-                            ->orWhere('')
-                            ->paginate(10);
+                            ->paginate(5);
+//            $lsOrder = DB::select("Select * from orders where customer_id IN (select id from customers where name like '$search_name')")->paginate(5);
         }
         else {
-            $lsOrder = order::paginate(10);
+            $lsOrder = order::paginate(5);
         }
         return view('admin.booking.index')->with(['lsOrder' => $lsOrder]);
     }
@@ -59,6 +59,13 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+//        $check_in = $request->checkin;
+//        $check_out = $request->checkout;
+//        $test = DB::select("select distinct room_id from orders where check_in_date <= '$check_in' and check_out_date >= '$check_out'
+//                                                                                    or check_in_date >= '$check_in' and check_in_date <= '$check_out'
+//                                                                                    or check_out_date >= '$check_in' and check_out_date <= '$check_out' and status = 0");
+//        dd($test);
+
         $todayDate = date('Y-m-d');
         $request->validate([
 //            'name' => 'required|min:3|max:191',
@@ -78,9 +85,9 @@ class BookingController extends Controller
         $customer->save();
         $newest_customer = customer::orderBy('created_at', 'desc')->first();
         $id_room = $request->input('dm-ecom-product-room');
-        $room = room::find($id_room);
-        $room->status = 1;
-        $room->save();
+//        $room = room::find($id_room);
+//        $room->status = 1;
+//        $room->save();
         $room_id = $request->input('dm-ecom-product-room');
         $order->room_id = $room_id;
         $order->customer_id = $newest_customer->id;
@@ -98,7 +105,6 @@ class BookingController extends Controller
             $orderService->order_id = $newest_order->id;
             $orderService->save();
         }
-
 
         return redirect(route("booking.index"));
     }
@@ -160,9 +166,9 @@ class BookingController extends Controller
         $customer->save();
         $newest_customer = customer::orderBy('created_at', 'desc')->first();
         $id_room = $request->input('dm-ecom-product-room');
-        $room = room::find($id_room);
-        $room->status = 1;
-        $room->save();
+//        $room = room::find($id_room);
+//        $room->status = 1;
+//        $room->save();
         $room_id = $request->input('dm-ecom-product-room');
         $order->room_id = $room_id;
         $order->customer_id = $newest_customer->id;
@@ -199,8 +205,14 @@ class BookingController extends Controller
     public function getRoom(Request $request)
     {
         $rooms_type_id = $request->id;
-        $list_room = room::where('rooms_type_id','=',$rooms_type_id)->get();
+        $check_in = $request->checkin;
+        $check_out = $request->checkout;
+        $list_room = DB::select("Select * from rooms where rooms_type_id = '$rooms_type_id' and id not in (select distinct room_id from orders where ((check_in_date <= '$check_in' and check_out_date >= '$check_out')
+                                                                                   or (check_in_date >= '$check_in' and check_in_date <= '$check_out')
+                                                                                   or (check_out_date >= '$check_in' and check_out_date <= '$check_out')) and status = 0)");
+
         return response(['data' => $list_room]);
+
     }
 
     public function detail($id)
@@ -215,20 +227,9 @@ class BookingController extends Controller
         $order = order::find($id);
         $order->status = $status;
         $order->save();
-        $room = room::find($order->room_id);
-        if ($order->status != 0)
-        {
-            $room->status = 0;
-        }
-        else
-        {
-            $room->status = 1;
-        }
-        $room->save();
         return response()->json([
             'status' => 'OK',
             'desc' => 'Change status success',
         ]);
     }
-
 }

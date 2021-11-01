@@ -20,6 +20,8 @@ class CreateRoomsTypesTable extends Migration
             $table->integer('quantity');
             $table->string('description');
             $table->string('image');
+            $table->integer('bedroom');
+            $table->integer('bathroom');
             $table->timestamps();
         });
     }

@@ -42,20 +42,11 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
-                                <!-- For more info and examples you can check out https://github.com/select2/select2 -->
-                                <label for="dm-ecom-product-category">Rooms</label>
-                                <select class="js-select2 form-control" id="dm-ecom-product-room" name="dm-ecom-product-room" style="width: 100%;" data-placeholder="Choose one..">
-
-                                </select>
-                            </div>
-
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="dm-project-check-in">Check-in Date</label>
                                     <input type="text" class="js-datepicker form-control" id="dm-project-check-in" name="check-in-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$date}}"
-                                        onchange="changeCheckin(event)">
+                                           >
                                 </div>
                             </div>
 
@@ -63,8 +54,17 @@
                                 <div class="col-md-6">
                                     <label class="form-label" for="dm-project-check-out">Check-out Date</label>
                                     <input type="text" class="js-datepicker form-control" id="dm-project-check-out" name="check-out-date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value=""
-                                        onchange="changeCheckout(event)">
+                                           >
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
+                                <!-- For more info and examples you can check out https://github.com/select2/select2 -->
+                                <label for="dm-ecom-product-category">Rooms</label>
+                                <select class="js-select2 form-control" id="dm-ecom-product-room" name="dm-ecom-product-room" style="width: 100%;" data-placeholder="Choose one..">
+
+                                </select>
                             </div>
 
                             <div class="form-group row">
@@ -146,10 +146,8 @@
         var inputValueRoom = document.querySelector('#dm-ecom-product-price');
         var checkIn = document.querySelector('#dm-project-check-in');
         var checkOut = document.querySelector('#dm-project-check-out');
-        var checkInDate;
-        var checkOutDate;
-        var diff;
-        var getDateBook;
+        var checkInDate, checkOutDate, rooms_type_id, diff, getDateBook;
+
         $(function (){
             $.ajaxSetup
             ({
@@ -164,7 +162,7 @@
                 let route = '{{route('getRoom')}}'
                 let $this = $(this)
                 let value = $this.val().split('|');
-                let rooms_type_id = value[0];
+                rooms_type_id = value[0];
                 let price = value[1];
                 inputValueRoom.value = price;
                 if(diff)
@@ -172,35 +170,106 @@
                     total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
                 }
                 console.log($this.val());
-                $.ajax({
-                    method: 'GET',
-                    url: route,
-                    data: {
-                        id: rooms_type_id
-                    }
-                })
-                .done(function (res){
-                    if (res.data){
-                        let html = '<option value=""></option>'
-                        $.each(res.data, function (index,value){
-                            if(value.status != 1)
-                            {
-                                html += "<option value='"+value.id+"'>" + value.name + "</option>"
+                if(checkOut.value)
+                {
+                    $.ajax({
+                        method: 'GET',
+                        url: route,
+                        data: {
+                            id: rooms_type_id,
+                            checkin : checkIn.value,
+                            checkout : checkOut.value
+                        }
+                    })
+                        .done(function (res){
+                            console.log(res.data);
+                            if (res.data){
+                                let html = '<option value=""></option>'
+                                $.each(res.data, function (index,value){
+                                    html += "<option value='"+value.id+"'>" + value.name + "</option>"
+                                })
+                                $('#dm-ecom-product-room').html('').append(html);
                             }
                         })
-                        $('#dm-ecom-product-room').html('').append(html);
-                    }
-                })
+                }
             });
+
+            $("#dm-project-check-in").change(function (event)
+            {
+                checkInDate = new Date(checkIn.value);
+                checkOutDate = new Date(checkOut.value);
+                if(checkOut.value != null){
+                    diff = Math.abs(checkOutDate - checkInDate);
+                    getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                    total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+                }
+                if(checkOut.value && rooms_type_id)
+                {
+                    event.preventDefault();
+                    let route = '{{route('getRoom')}}'
+                    $.ajax({
+                        method: 'GET',
+                        url: route,
+                        data: {
+                            id: rooms_type_id,
+                            checkin : checkIn.value,
+                            checkout : checkOut.value
+                        }
+                    })
+                        .done(function (res){
+                            console.log(res.data);
+                            if (res.data){
+                                let html = '<option value=""></option>'
+                                $.each(res.data, function (index,value){
+                                    html += "<option value='"+value.id+"'>" + value.name + "</option>"
+                                })
+                                $('#dm-ecom-product-room').html('').append(html);
+                            }
+                        })
+                }
+            });
+
+            $("#dm-project-check-out").change(function (event)
+            {
+                checkOutDate = new Date(checkOut.value);
+                checkInDate = new Date(checkIn.value);
+                if(checkIn.value != null){
+                    diff = Math.abs(checkOutDate - checkInDate);
+                    getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
+                    total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
+                }
+                if(rooms_type_id)
+                {
+                    event.preventDefault();
+                    let route = '{{route('getRoom')}}'
+                    $.ajax({
+                        method: 'GET',
+                        url: route,
+                        data: {
+                            id: rooms_type_id,
+                            checkin : checkIn.value,
+                            checkout : checkOut.value
+                        }
+                    })
+                        .done(function (res){
+                            console.log(res.data);
+                            if (res.data){
+                                let html = '<option value=""></option>'
+                                $.each(res.data, function (index,value){
+                                    html += "<option value='"+value.id+"'>" + value.name + "</option>"
+                                })
+                                $('#dm-ecom-product-room').html('').append(html);
+                            }
+                        })
+                }
+            });
+
         })
 
         function changeService(e, id){
             let idService = '#service' + id;
-            console.log(e)
             var checkboxService = document.querySelector(idService)
             let value = e.target.value.split('|');
-            console.log(checkboxService.checked)
-            console.log(e.target.value)
             if (checkboxService.checked)
             {
                 priceService.value = Number(priceService.value) + Number(value[1]);
@@ -209,31 +278,6 @@
             else {
                 priceService.value = Number(priceService.value) - Number(value[1]);
                 total.value = Number(total.value) - Number(value[1]);
-            }
-        }
-
-        function changeCheckin(e){
-            checkInDate = new Date(checkIn.value);
-            checkOutDate = new Date(checkOut.value);
-            if(checkOut.value != null){
-                diff = Math.abs(checkOutDate - checkInDate);
-                console.log(diff);
-                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
-                console.log(getDateBook)
-                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
-            }
-
-        }
-
-        function changeCheckout(e){
-            checkOutDate = new Date(checkOut.value);
-            checkInDate = new Date(checkIn.value);
-            if(checkIn.value != null){
-                diff = Math.abs(checkOutDate - checkInDate);
-                console.log(diff);
-                getDateBook = Number(Math.ceil(diff / (1000 * 60 * 60 * 24)));
-                console.log(getDateBook)
-                total.value = Number(inputValueRoom.value)*getDateBook + Number(priceService.value);
             }
         }
 

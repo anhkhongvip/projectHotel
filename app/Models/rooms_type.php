@@ -9,7 +9,7 @@ class rooms_type extends Model
 {
     use HasFactory;
 
-//    public function rooms(){
-//        return $this->hasMany('App\Models\room');
-//    }
+    public function rooms(){
+        return $this->hasMany('App\Models\room');
+    }
 }
