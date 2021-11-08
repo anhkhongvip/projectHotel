@@ -333,14 +333,14 @@ mark{
 }
 .cbp-af-header.cbp-af-header-shrink {
 	margin-top: 0;
-    -webkit-transform: translateY(-52px);
+    /*-webkit-transform: translateY(-52px);*/
     -ms-transform: translateY(-52px);
-    transform: translateY(-52px);
+    /*transform: translateY(-52px);*/
 	background: rgba(21,21,21,.92);
 	-webkit-transition : all 0.3s ease-out;
-	-moz-transition : all 0.3s ease-out;
-	-o-transition :all 0.3s ease-out;
-	transition : all 0.3s ease-out;
+	-moz-transition : all 0.1s ease-out;
+	-o-transition :all 0.1s ease-out;
+	transition : all 0.1s ease-out;
 }
 .cbp-af-header.cbp-af-header-shrink .logo{
 	height: 50px;
@@ -3187,7 +3187,7 @@ figure.vimeo a img, figure.youtube a img {
 	padding: 0.8rem 0.75rem;
 	font-size: .8rem;
 	line-height: 1.25;
-	color: #464a4c;
+	color: white;
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -3203,19 +3203,19 @@ figure.vimeo a img, figure.youtube a img {
 	box-shadow: none;
 }
 .form-control::-webkit-input-placeholder {
-	color: #999;
+	color: white;
 	opacity: 1;
 }
 .form-control::-moz-placeholder {
-	color: #999;
+	color: white;
 	opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-	color: #999;
+	color: white;
 	opacity: 1;
 }
 .form-control::placeholder {
-	color: #999;
+	color: white;
 	opacity: 1;
 }
 .for-textarea{

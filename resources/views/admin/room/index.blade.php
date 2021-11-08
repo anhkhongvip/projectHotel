@@ -274,7 +274,7 @@
                             <div class="block-content block-content-full">
                                 <div class="row">
                                     <div class="col-6">
-                                        <a class="btn btn-sm btn-hero btn-noborder btn-primary btn-block" href="javascript:void(0)">
+                                        <a class="btn btn-sm btn-hero btn-noborder btn-primary btn-block" href="{{route('rooms.create')}}">
                                             Add
                                         </a>
                                     </div>

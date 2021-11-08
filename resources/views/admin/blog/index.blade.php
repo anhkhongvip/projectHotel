@@ -83,12 +83,15 @@
                 <a class="block block-rounded" href="{{route('blog.create')}}">
                     <div class="block-content block-content-full">
                         <div class="py-md-3">
+                            <p class="font-size-h3 font-w700 mb-0">
+
+                            </p>
                             <div class="py-3 d-none d-md-block">
                                 <i class="fa fa-2x fa-plus text-success-light"></i>
+                                <br><br>
+                                <i class="fa fa-plus text-success-light mr-1 d-md-none"></i> <span class="font-size-h3 font-w700">New Post</span>
+                                <br>
                             </div>
-                            <p class="font-size-h3 font-w700 mb-0">
-                                <i class="fa fa-plus text-success-light mr-1 d-md-none"></i> New Post
-                            </p>
                         </div>
                     </div>
                 </a>
@@ -104,13 +107,12 @@
             </div>
             <div class="block-content">
                 <!-- Search Posts -->
-                <form class="push" action="be_pages_blog_post_manage.html" method="POST">
+                <form class="push" action="{{route('blog.index')}}" method="GET">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Posts..">
+                        <input type="text" class="form-control" name="search_name" placeholder="Search Posts..">
                         <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-fw fa-search"></i>
-                                        </span>
+                            <input type="submit" class="btn btn-alt-primary" value="Search">
                         </div>
                     </div>
                 </form>
@@ -127,26 +129,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($lsBlog as $blog)
+                    @foreach($lsPost as $post)
                     <tr>
                         <td>
-                            {{$blog->id}}
+                            {{$post->id}}
                         </td>
                         <td>
                             <a href="be_pages_blog_story.html">
-                                {{$blog->title}}
+                                {{$post->title}}
                             </a>
                         </td>
                         <td class="d-none d-xl-table-cell">
-                            {{$blog->created_at}}
+                            {{$post->created_at}}
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="{{route('blog.edit', $blog->id)}}">
+                            <a class="btn btn-sm btn-light" href="{{route('blog.edit', $post->id)}}">
                                 <i class="fa fa-fw fa-pencil-alt text-primary"></i>
                             </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                            <a class="btn btn-sm btn-alt-secondary" href="{{URL::to('/blog/destroy/'.$post->id)}}">
                                 <i class="fa fa-fw fa-times text-danger"></i>
                             </a>
+
                         </td>
                     </tr>
                     @endforeach
@@ -155,8 +158,8 @@
                 <!-- END Posts Table -->
 
                 <!-- Pagination -->
-                <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
-                    {{$lsBlog->links("pagination::bootstrap-4")}}
+                <div class="shop_pagination_area wow fadeInUp d-flex justify-content-end" data-wow-delay="1.1s">
+                    {{$lsPost->links("pagination::bootstrap-4")}}
                 </div>
             </div>
         </div>

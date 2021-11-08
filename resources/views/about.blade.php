@@ -25,17 +25,17 @@
         </div>
     </div>
 
-    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h5 class="color-grey">A new dimension of luxury.</h5>
-                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>
-                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 text-center">--}}
+{{--                    <h5 class="color-grey">A new dimension of luxury.</h5>--}}
+{{--                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>--}}
+{{--                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="section padding-top-bottom over-hide">
         <div class="container">
@@ -49,7 +49,7 @@
                     <div class="services-box text-center">
                         <img src="img/4.svg" alt="">
                         <h5 class="mt-2">welcome drink</h5>
-                        <p class="mt-3">Sed ut perspiciatis unde omnis iste natus error sit, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                        <p class="mt-3">Welcome drink is prepared at the Bar and distributed by the Bartender or waiter in charge with its designated form.</p>
                         <a class="mt-1 btn btn-primary" href="{{asset('services')}}">read more</a>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="services-box text-center">
                         <img src="img/5.svg" alt="">
                         <h5 class="mt-2">swimming pool</h5>
-                        <p class="mt-3">Sed ut perspiciatis unde omnis iste natus error sit, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                        <p class="mt-3">Vacation in style this summer at the city, where the rooftop pool and sun terrace are an enviable spot from which to admire the city.</p>
                         <a class="mt-1 btn btn-primary" href="{{asset('services')}}">read more</a>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <div class="services-box text-center">
                         <img src="img/6.svg" alt="">
                         <h5 class="mt-2">food included</h5>
-                        <p class="mt-3">Sed ut perspiciatis unde omnis iste natus error sit, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                        <p class="mt-3">With our unusual Design and Exceptional Service you can dive into a exceptional Themeworld between The Rhein, Mosel and Lahn.</p>
                         <a class="mt-1 btn btn-primary" href="{{asset('services')}}">read more</a>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <div class="row justify-content-center">
                         <div class="col-10 col-xl-8 text-center">
                             <h3 class="text-center">Private pool suite</h3>
-                            <p class="text-center mt-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                            <p class="text-center mt-4">Tucked away in the iconic Hollywood getaway of Palm Springs, L’Horizon Resort & Spa is a time capsule of the mid-century modern aesthetic. Furnished with new and vintage furniture, art and accessories...</p>
                             <a class="mt-5 btn btn-primary" href="{{asset('search')}}">check availability</a>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="row justify-content-center">
                         <div class="col-10 col-xl-8 text-center">
                             <h3 class="text-center">Sea view suite</h3>
-                            <p class="text-center mt-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                            <p class="text-center mt-4">The Sea View Suites seduce with comfort and elegance. Perfect for those who wish to spend moments of relax and rest in the suite, these charming apartments with living room, bedroom and bathroom, offer a veranda overlooking the sea.</p>
                             <a class="mt-5 btn btn-primary" href="{{asset('search')}}">check availability</a>
                         </div>
                     </div>

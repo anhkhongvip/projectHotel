@@ -143,7 +143,7 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
-                    <a href="{{asset('roomgallery')}}">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-1.jpg" alt="">
                             <div class="services-text-over">spa salon</div>
@@ -151,7 +151,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-sm-0">
-                    <a href="{{asset('roomgallery')}}">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-2.jpg" alt="">
                             <div class="services-text-over">restaurant</div>
@@ -159,7 +159,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
-                    <a href="{{asset('roomgallery')}}">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-3.jpg" alt="">
                             <div class="services-text-over">pool</div>
@@ -167,7 +167,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
-                    <a href="{{asset('roomgallery')}}">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-4.jpg" alt="">
                             <div class="services-text-over">activities</div>

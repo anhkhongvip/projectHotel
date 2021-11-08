@@ -7,7 +7,7 @@
 
     <div class="section big-55-height over-hide z-bigger">
 
-        <div class="parallax parallax-top" style="background-image: url('img/2.jpg')"></div>
+        <div class="parallax parallax-top" style="background-image: url({{asset('img/2.jpg')}})"></div>
         <div class="dark-over-pages"></div>
 
         <div class="hero-center-section pages">
@@ -76,7 +76,7 @@
     </div>
 
     <div class="section padding-top-bottom-big over-hide">
-        <div class="parallax" style="background-image: url('img/5.jpg')"></div>
+        <div class="parallax" style="background-image: url({{asset('img/5.jpg')}})"></div>
         <div class="section z-bigger">
             <div class="container">
                 <div class="row justify-content-center">

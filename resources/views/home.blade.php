@@ -8,26 +8,27 @@
                         Dashboard
                     </h1>
                     <p class="mb-0">
-                        Welcome, {{ Auth::user()->name }}! You have <a class="font-w500" href="javascript:void(0)">5 new notifications</a>.
+                        Welcome, {{ Auth::user()->name }}!
+{{--                        You have <a class="font-w500" href="javascript:void(0)">5 new notifications</a>.--}}
                     </p>
                 </div>
-                <div class="mt-4 mt-md-0">
-                    <a class="btn btn-sm btn-alt-primary" href="javascript:void(0)">
-                        <i class="fa fa-cog"></i>
-                    </a>
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn btn-sm btn-alt-primary px-3" id="dropdown-analytics-overview" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Last 30 days <i class="fa fa-fw fa-angle-down"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right font-size-sm" aria-labelledby="dropdown-analytics-overview">
-                            <a class="dropdown-item" href="javascript:void(0)">This Week</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Previous Week</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">This Month</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Previous Month</a>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="mt-4 mt-md-0">--}}
+{{--                    <a class="btn btn-sm btn-alt-primary" href="javascript:void(0)">--}}
+{{--                        <i class="fa fa-cog"></i>--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown d-inline-block">--}}
+{{--                        <button type="button" class="btn btn-sm btn-alt-primary px-3" id="dropdown-analytics-overview" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            Last 30 days <i class="fa fa-fw fa-angle-down"></i>--}}
+{{--                        </button>--}}
+{{--                        <div class="dropdown-menu dropdown-menu-right font-size-sm" aria-labelledby="dropdown-analytics-overview">--}}
+{{--                            <a class="dropdown-item" href="javascript:void(0)">This Week</a>--}}
+{{--                            <a class="dropdown-item" href="javascript:void(0)">Previous Week</a>--}}
+{{--                            <div class="dropdown-divider"></div>--}}
+{{--                            <a class="dropdown-item" href="javascript:void(0)">This Month</a>--}}
+{{--                            <a class="dropdown-item" href="javascript:void(0)">Previous Month</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
         <!-- END Hero -->

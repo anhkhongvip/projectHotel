@@ -66,49 +66,19 @@
                         <thead>
                         <tr>
                             <th class="text-center" style="width: 100px;">ID</th>
-                            <th>Product Name</th>
-                            <th class="text-center">Stock</th>
-                            <th class="text-center">Qty</th>
-                            <th class="text-right" style="width: 10%;">Unit Cost</th>
-                            <th class="text-right" style="width: 10%;">Price</th>
+                            <th>Room's Name</th>
+                            <th class="text-center">Check-in Date</th>
+                            <th class="text-center">Check-out Date</th>
+                            <th class="text-right" style="width: 10%;">Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>PID.965</strong></a></td>
-                            <td><a href="be_pages_ecom_product_edit.html"><strong>Dark Souls III</strong></a></td>
-                            <td class="text-center">50</td>
-                            <td class="text-center"><strong>1</strong></td>
-                            <td class="text-right">$59,00</td>
-                            <td class="text-right">$59,00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>PID.755</strong></a></td>
-                            <td><a href="be_pages_ecom_product_edit.html"><strong>Control</strong></a></td>
-                            <td class="text-center">68</td>
-                            <td class="text-center"><strong>1</strong></td>
-                            <td class="text-right">$59,00</td>
-                            <td class="text-right">$59,00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>PID.235</strong></a></td>
-                            <td><a href="be_pages_ecom_product_edit.html"><strong>Forza Motorsport 7</strong></a></td>
-                            <td class="text-center">23</td>
-                            <td class="text-center"><strong>1</strong></td>
-                            <td class="text-right">$59,00</td>
-                            <td class="text-right">$59,00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-right"><strong>Total Price:</strong></td>
-                            <td class="text-right">$177,00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-right"><strong>Total Paid:</strong></td>
-                            <td class="text-right">$177,00</td>
-                        </tr>
-                        <tr class="table-active">
-                            <td colspan="5" class="text-right text-uppercase"><strong>Total Due:</strong></td>
-                            <td class="text-right"><strong>$0,00</strong></td>
+                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>{{$order->id}}</strong></a></td>
+                            <td><a href="be_pages_ecom_product_edit.html"><strong>{{$order->room->name}}</strong></a></td>
+                            <td class="text-center">{{$order->check_in_date}}</td>
+                            <td class="text-center">{{$order->check_out_date}}</td>
+                            <td class="text-right">${{$order->total}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -126,13 +96,13 @@
                         <h3 class="block-title">Billing Address</h3>
                     </div>
                     <div class="block-content">
-                        <div class="font-size-h4 mb-1">Helen Jacobs</div>
+                        <div class="font-size-h4 mb-1">{{$order->customer->name}}</div>
                         <address class="font-size-sm">
                             Sunset Str 598<br>
                             Melbourne<br>
                             Australia, 11-671<br><br>
                             <i class="fa fa-phone"></i> (999) 888-77777<br>
-                            <i class="fa fa-envelope-o"></i> <a href="javascript:void(0)">company@example.com</a>
+                            <i class="fa fa-envelope-o"></i> <a href="#">{{$order->customer->email}}</a>
                         </address>
                     </div>
                 </div>
@@ -160,91 +130,91 @@
         </div>
         <!-- END Customer -->
 
-        <!-- Log Messages -->
-        <div class="block block-rounded">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">Log Messages</h3>
-            </div>
-            <div class="block-content">
-                <table class="table table-borderless table-striped table-vcenter font-size-sm">
-                    <tbody>
-                    <tr>
-                        <td class="font-size-base" style="width: 80px;">
-                            <span class="badge badge-primary">Order</span>
-                        </td>
-                        <td style="width: 220px;">
-                            <span class="font-w600">January 17, 2020 - 18:00</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">Support</a>
-                        </td>
-                        <td class="text-success"><strong>Order Completed</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="font-size-base">
-                            <span class="badge badge-primary">Order</span>
-                        </td>
-                        <td>
-                            <span class="font-w600">January 17, 2020 - 17:36</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">Support</a>
-                        </td>
-                        <td class="text-warning"><strong>Preparing Order</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="font-size-base">
-                            <span class="badge badge-success">Payment</span>
-                        </td>
-                        <td>
-                            <span class="font-w600">January 16, 2020 - 18:10</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">John Parker</a>
-                        </td>
-                        <td class="text-success"><strong>Payment Completed</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="font-size-base">
-                            <span class="badge badge-danger">Email</span>
-                        </td>
-                        <td>
-                            <span class="font-w600">January 16, 2020 - 10:35</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">Support</a>
-                        </td>
-                        <td class="text-danger"><strong>Missing payment details. Email was sent and awaiting for payment before processing</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="font-size-base">
-                            <span class="badge badge-primary">Order</span>
-                        </td>
-                        <td>
-                            <span class="font-w600">January 15, 2020 - 14:59</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">Support</a>
-                        </td>
-                        <td>All products are available</td>
-                    </tr>
-                    <tr>
-                        <td class="font-size-base">
-                            <span class="badge badge-primary">Order</span>
-                        </td>
-                        <td>
-                            <span class="font-w600">January 15, 2020 - 14:29</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)">John Parker</a>
-                        </td>
-                        <td>Order Submitted</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- END Log Messages -->
+{{--        <!-- Log Messages -->--}}
+{{--        <div class="block block-rounded">--}}
+{{--            <div class="block-header block-header-default">--}}
+{{--                <h3 class="block-title">Log Messages</h3>--}}
+{{--            </div>--}}
+{{--            <div class="block-content">--}}
+{{--                <table class="table table-borderless table-striped table-vcenter font-size-sm">--}}
+{{--                    <tbody>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base" style="width: 80px;">--}}
+{{--                            <span class="badge badge-primary">Order</span>--}}
+{{--                        </td>--}}
+{{--                        <td style="width: 220px;">--}}
+{{--                            <span class="font-w600">January 17, 2020 - 18:00</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">Support</a>--}}
+{{--                        </td>--}}
+{{--                        <td class="text-success"><strong>Order Completed</strong></td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base">--}}
+{{--                            <span class="badge badge-primary">Order</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <span class="font-w600">January 17, 2020 - 17:36</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">Support</a>--}}
+{{--                        </td>--}}
+{{--                        <td class="text-warning"><strong>Preparing Order</strong></td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base">--}}
+{{--                            <span class="badge badge-success">Payment</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <span class="font-w600">January 16, 2020 - 18:10</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">John Parker</a>--}}
+{{--                        </td>--}}
+{{--                        <td class="text-success"><strong>Payment Completed</strong></td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base">--}}
+{{--                            <span class="badge badge-danger">Email</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <span class="font-w600">January 16, 2020 - 10:35</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">Support</a>--}}
+{{--                        </td>--}}
+{{--                        <td class="text-danger"><strong>Missing payment details. Email was sent and awaiting for payment before processing</strong></td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base">--}}
+{{--                            <span class="badge badge-primary">Order</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <span class="font-w600">January 15, 2020 - 14:59</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">Support</a>--}}
+{{--                        </td>--}}
+{{--                        <td>All products are available</td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td class="font-size-base">--}}
+{{--                            <span class="badge badge-primary">Order</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <span class="font-w600">January 15, 2020 - 14:29</span>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="javascript:void(0)">John Parker</a>--}}
+{{--                        </td>--}}
+{{--                        <td>Order Submitted</td>--}}
+{{--                    </tr>--}}
+{{--                    </tbody>--}}
+{{--                </table>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <!-- END Log Messages -->--}}
     </div>
     <!-- END Page Content -->
 @endsection

@@ -20,17 +20,17 @@
         </div>
     </div>
 
-    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h5 class="color-grey">A new dimension of luxury.</h5>
-                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>
-                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 text-center">--}}
+{{--                    <h5 class="color-grey">A new dimension of luxury.</h5>--}}
+{{--                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>--}}
+{{--                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="section padding-top z-bigger">
         <div class="container">
@@ -122,6 +122,13 @@
                         </div>
                     </div>
                 </div>
+                <section class="col-md-12 mt-5 mb-3">
+                    <div class="container">
+                        <div id="map" style="width: 100%; height: 300px">
+
+                        </div>
+                    </div>
+                </section>
                 <div class="section clearfix"></div>
                 <div class="col-md-8 text-center mt-5" data-scroll-reveal="enter bottom move 50px over 0.7s after 0.2s">
                     <p class="mb-0"><em>available at: 8am - 10pm</em></p>
@@ -136,6 +143,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 
@@ -248,4 +257,20 @@
             </div>
         </div>
     </div>
+
+    <script src="Web/libs/jquery/jquery-3.5.1.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaj0mHlR-keu-9hsR6d-gB0L9BclG04rk&callback=initMap&libraries=&v=weekly"
+        defer
+    ></script>
+    <script>
+        let map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 21.0549072185542, lng: 105.82596748985067 },
+                zoom: 14,
+            });
+        }
+    </script>
 @endsection

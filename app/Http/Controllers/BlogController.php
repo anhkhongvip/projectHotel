@@ -13,10 +13,20 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $lsBlog = posts::paginate(10);
-        return view('admin.blog.index')->with(['lsBlog' => $lsBlog]);
+        $search_name = $request->search_name;
+        if (isset($search_name)){
+            $lsPost = posts::query()
+                ->Where('title','like','%'.$search_name.'%')
+                ->orWhere('id','like','%'.$search_name.'%')
+                ->paginate(5);
+//            $lsOrder = DB::select("Select * from orders where customer_id IN (select id from customers where name like '$search_name')")->paginate(5);
+        }
+        else {
+            $lsPost = posts::paginate(5);
+        }
+        return view('admin.blog.index')->with(['lsPost' => $lsPost]);
     }
 
     /**
@@ -41,22 +51,15 @@ class BlogController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('excerpt');
         $post->post_detail = $request->input('body');
-        $post->save();
-        $newest_post = posts::orderBy('created_at', 'desc')->first();
-
-        foreach ($request->images as $image) {
-            $imagePath = "";
-
-            if ($request->hasFile("images")){
-                $imagePath = $image->store('post-img');
-                $imagePath = 'img/'.$imagePath;
-                $post_image = new post_image();
-                $post_image->post_id = $newest_post->id;
-                $post_image->image = $imagePath;
-                $post_image->save();
-            }
+        $imagePath = "";
+        if ($request->hasFile("image")){
+            $imagePath = $request->image->store('post-img');
+            $imagePath = 'img/'.$imagePath;
+            $post->image = $imagePath;
         }
-        return redirect(route('blog.create'));
+        $post->save();
+
+        return redirect(route('blog.index'));
     }
 
     /**
@@ -96,7 +99,6 @@ class BlogController extends Controller
         $post->content = $request->input('excerpt');
         $post->post_detail = $request->input('body');
         $post->save();
-        $newest_post = posts::orderBy('created_at', 'desc')->first();
 
         foreach ($request->images as $image) {
             $imagePath = "";
@@ -104,8 +106,7 @@ class BlogController extends Controller
             if ($request->hasFile("images")){
                 $imagePath = $image->store('post-img');
                 $imagePath = 'img/'.$imagePath;
-                $post_image = new post_image();
-                $post_image->post_id = $newest_post->id;
+                $post_image = new posts();
                 $post_image->image = $imagePath;
                 $post_image->save();
             }
@@ -119,8 +120,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $post = posts::find($id);
+        $post->delete();
+        return redirect(route('blog.index'));
     }
 }

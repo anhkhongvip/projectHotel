@@ -92,6 +92,7 @@
                                            value="0" readonly>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="dm-ecom-product-total">Total ($)</label>

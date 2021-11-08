@@ -181,12 +181,12 @@
                         <div class="room-box-in">
                             <h5 class="">pool suite</h5>
                             <p class="mt-3">Sed ut perspiciatis unde omnis, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
-                            <a class="mt-1 btn btn-primary" href="{{asset('roomgallery')}}">book from 130$</a>
+                            <a class="mt-1 btn btn-primary" href="#">book from 130$</a>
                             <div class="room-icons mt-4 pt-4">
                                 <img src="img/5.svg" alt="">
                                 <img src="img/2.svg" alt="">
                                 <img src="img/3.svg" alt="">
-                                <a href="{{asset('roomgallery')}}">full info</a>
+                                <a href="#">full info</a>
                             </div>
                         </div>
                     </div>
@@ -205,12 +205,12 @@
                         <div class="room-box-in">
                             <h5 class="">small room</h5>
                             <p class="mt-3">Sed ut perspiciatis unde omnis, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
-                            <a class="mt-1 btn btn-primary" href="{{asset('roomgallery')}}">book from 80$</a>
+                            <a class="mt-1 btn btn-primary" href="#">book from 80$</a>
                             <div class="room-icons mt-4 pt-4">
                                 <img src="img/4.svg" alt="">
                                 <img src="img/2.svg" alt="">
                                 <img src="img/6.svg" alt="">
-                                <a href="{{asset('roomgallery')}}">full info</a>
+                                <a href="#">full info</a>
                             </div>
                         </div>
                     </div>
@@ -229,12 +229,12 @@
                         <div class="room-box-in">
                             <h5 class="">Apartment</h5>
                             <p class="mt-3">Sed ut perspiciatis unde omnis, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
-                            <a class="mt-1 btn btn-primary" href="{{asset('roomgallery')}}">book from 110$</a>
+                            <a class="mt-1 btn btn-primary" href="#">book from 110$</a>
                             <div class="room-icons mt-4 pt-4">
                                 <img src="img/5.svg" alt="">
                                 <img src="img/2.svg" alt="">
                                 <img src="img/3.svg" alt="">
-                                <a href="{{asset('roomgallery')}}">full info</a>
+                                <a href="#">full info</a>
                             </div>
                         </div>
                     </div>

@@ -40,15 +40,15 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/ionicons.min.css"/>
-    <link rel="stylesheet" href="css/datepicker.css"/>
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css"/>
-    <link rel="stylesheet" href="css/owl.carousel.css"/>
-    <link rel="stylesheet" href="css/owl.transitions.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/colors/color.css"/>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/datepicker.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/jquery.fancybox.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/owl.transitions.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/colors/color.css')}}"/>
 
     <!-- Favicons
     ================================================== -->
@@ -99,42 +99,43 @@
 {{--        </div>--}}
 {{--    </div>--}}
     <div class="menu">
-        <a href="{{asset('/')}}" >
+        <a href="{{route('/')}}" >
             <div class="logo">
-                <img src="img/logo3.png" alt="">
+                <img src="{{asset('img/logo3.png')}}" alt="">
             </div>
         </a>
         <ul>
             <li>
-                <a href="{{asset('/')}}" >home</a>
+                <a href="{{route('/')}}" >home</a>
 
             </li>
             <li>
-                <a href="{{asset('room')}}" >rooms</a>
+                <a href="{{route('search')}}" >rooms</a>
             </li>
             <li>
-                <a href="{{asset('post')}}" >pages</a>
+{{--                <a href="{{route('post')}}" >pages</a>--}}
+                <a href="{{route('explore')}}" >pages</a>
                 <ul>
-                    <li><a href="{{asset('explore')}}">Explore</a></li>
-                    <li><a href="{{asset('search')}}">Search</a></li>
-                    <li><a href="{{asset('terms')}}">Terms &amp; Conditions</a></li>
-                    <li><a href="{{asset('services')}}">Services</a></li>
-                    <li><a href="{{asset('restaurant')}}">Restaurant</a></li>
-                    <li><a href="{{asset('testimonials')}}">Testimonials</a></li>
-                    <li><a href="{{asset('gallery')}}">Gallery</a></li>
+                    <li><a href="{{route('explore')}}">Explore</a></li>
+                    <li><a href="{{route('search')}}">Search</a></li>
+                    <li><a href="{{route('terms')}}">Terms &amp; Conditions</a></li>
+                    <li><a href="{{route('services')}}">Services</a></li>
+                    <li><a href="{{route('restaurant')}}">Restaurant</a></li>
+                    <li><a href="{{route('testimonials')}}">Testimonials</a></li>
+                    <li><a href="{{route('gallery')}}">Gallery</a></li>
                 </ul>
             </li>
             <li>
-                <a href="{{asset('about')}}">about us</a>
+                <a href="{{route('about')}}">about us</a>
             </li>
             <li>
-                <a href="{{asset('blog')}}">news</a>
+                <a href="{{route('blog')}}">news</a>
             </li>
             <li>
-                <a href="{{asset('contact')}}">contact</a>
+                <a href="{{route('contact')}}">contact</a>
             </li>
             <li>
-                <a href="{{asset('search')}}"><span>book now</span></a>
+                <a href="{{route('booking')}}"><span>book now</span></a>
             </li>
         </ul>
     </div>
@@ -160,7 +161,8 @@
             </div>
             <div class="col-md-5 mt-4 mt-md-0 text-center text-md-left logos-footer">
                 <h6 class="color-white mb-3">about us</h6>
-                <p class="color-grey mb-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+                <p class="color-grey mb-4">B52 Hotel is located a 2-minute drive from the A2 highway,
+                    5.5 kilometers from the Poznań International Fair and the Poznań Główny railway station.</p>
                 <img src="img/logos/1.png" alt="">
                 <img src="img/logos/2.png" alt="">
                 <img src="img/logos/3.png" alt="">
@@ -190,11 +192,11 @@
 
 <!-- JAVASCRIPT
 ================================================== -->
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 <!-- End Document
 ================================================== -->
 </body>

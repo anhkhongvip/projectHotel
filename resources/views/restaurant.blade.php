@@ -25,17 +25,17 @@
         </div>
     </div>
 
-    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h5 class="color-grey">A new dimension of luxury.</h5>
-                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>
-                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="section padding-top-bottom-smaller background-dark-2 over-hide">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 text-center">--}}
+{{--                    <h5 class="color-grey">A new dimension of luxury.</h5>--}}
+{{--                    <p class="color-white mt-3 mb-3"><em>our presentation, 0:48 min</em></p>--}}
+{{--                    <a href="https://vimeo.com/54851233" class="video-button" data-fancybox><i class="fa fa-play"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="section padding-top over-hide">
         <div class="container">

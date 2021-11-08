@@ -49,10 +49,22 @@ class RoomController extends Controller
     {
         $room = new room();
         $room->name = $request->input('room-name');
+        $room->excerpt = $request->input('room_excerpt');
         $room->description = $request->input('room-description');
         $room->rooms_type_id = $request->input('room_type');
-        $room->save();
+        $room->room_size = $request->input('room_size');
+        $room->occupancy = $request->input('room_occupancy');
+        $room->bed_size = $request->input('room_bed_size');
+        $room->swimming_pool = $request->input('swimming_pool');
         $newest_room = room::orderBy('created_at', 'desc')->first();
+
+        $imagePath = "";
+        if ($request->hasFile("image")){
+            $imagePath = $request->image->store('room-img');
+            $imagePath = 'img/'.$imagePath;
+            $room->image = $imagePath;
+        }
+        $room->save();
 
         foreach ($request->images as $image) {
             $imagePath = "";
@@ -114,10 +126,22 @@ class RoomController extends Controller
     {
         $room = room::find($id);
         $room->name = $request->input('room-name');
+        $room->excerpt = $request->input('room_excerpt');
         $room->description = $request->input('room-description');
         $room->rooms_type_id = $request->input('room_type');
-        $room->save();
+        $room->room_size = $request->input('room_size');
+        $room->occupancy = $request->input('room_occupancy');
+        $room->bed_size = $request->input('room_bed_size');
+        $room->swimming_pool = $request->input('swimming_pool');
         $newest_room = room::orderBy('created_at', 'desc')->first();
+
+        $imagePath = "";
+        if ($request->hasFile("image")){
+            $imagePath = $request->image->store('room-img');
+            $imagePath = 'img/'.$imagePath;
+            $room->image = $imagePath;
+        }
+        $room->save();
 
         foreach ($request->images as $image) {
             $imagePath = "";

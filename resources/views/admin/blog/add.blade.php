@@ -51,7 +51,7 @@
                                     <label>Featured Image</label>
                                     <div class="custom-file">
                                         <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                        <input type="file" class="custom-file-input" id="dm-post-add-image" name="images[]" data-toggle="custom-file-input" multiple>
+                                        <input type="file" class="custom-file-input" id="dm-post-add-image" name="image" data-toggle="custom-file-input" multiple>
                                         <label class="custom-file-label" for="dm-post-add-image">Choose an image</label>
                                     </div>
                                 </div>
@@ -62,6 +62,7 @@
                                 <label>Body</label>
                                 <textarea id="js-ckeditor" name="body"></textarea>
                             </div>
+
                         </div>
                     </div>
                 </div>

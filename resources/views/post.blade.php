@@ -6,7 +6,7 @@
 
     <div class="section big-55-height over-hide z-bigger">
 
-        <div class="parallax parallax-top" style="background-image: url('img/blog/post.jpg')"></div>
+        <div class="parallax parallax-top" style="background-image: url({{asset('img/blog/post.jpg')}})"></div>
         <div class="dark-over-pages"></div>
 
         <div class="hero-center-section pages">
@@ -27,51 +27,14 @@
                 <div class="col-lg-8">
                     <div class="section drop-shadow rounded">
                         <div class="post-box background-white over-hide">
-                            <img src="img/blog/6.jpg" alt="" class="blog-home-img"/>
+                            <img src="{{asset($post->image)}}" alt="" class="blog-home-img"/>
                             <div class="padding-in">
-                                <p class="mt-4">Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
-                                <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
-                                <div class="row mt-4 mb-4">
-                                    <div class="col-md-6">
-                                        <img src="img/blog/3.jpg" alt="" class="blog-home-img"/>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="img/blog/2.jpg" alt="" class="blog-home-img mt-4 mt-md-0"/>
-                                    </div>
-                                </div>
-                                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>You can use the mark tag to <mark>highlight</mark> text.</p>
-                                <p><del>This line of text is meant to be treated as deleted text.</del></p>
-                                <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
-                                <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-                                <p><u>This line of text will render as underlined</u></p>
-                                <p><small>This line of text is meant to be treated as fine print.</small></p>
-                                <p><strong>This line rendered as bold text.</strong></p>
-                                <p><em>This line rendered as italicized text.</em></p>
-                                <p class="lead">Design must reflect the practical and aesthetic in business but above all... good design must primarily serve people.</p>
-                                <p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <div class="video-section mt-4 mb-4">
-                                    <figure class="vimeo">
-                                        <a href="https://player.vimeo.com/video/219627581">
-                                            <img src="img/video.jpg" alt="image"/>
-                                        </a>
-                                    </figure>
-                                </div>
+                                {!! $post->post_detail !!}
                                 <blockquote class="blockquote">
                                     <p>Some people think design means how it looks. But of course, if you dig deeper, it's really how it works.</p>
                                     <footer class="blockquote-footer">Jason Salvatore</footer>
                                 </blockquote>
-                                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <blockquote class="blockquote blockquote-reverse">
-                                    <p>Some people think design means how it looks. But of course, if you dig deeper, it's really how it works.</p>
-                                    <footer class="blockquote-footer">Jason Salvatore</footer>
-                                </blockquote>
-                                <div class="separator-wrap pt-4 pb-4">
-                                    <span class="separator"><span class="separator-line dashed"></span></span>
-                                </div>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mb-1"><span>design</span></a>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mb-1"><span>business</span></a>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mb-1"><span>responsive</span></a>
+
                                 <div class="separator-wrap pt-4 pb-4">
                                     <span class="separator"><span class="separator-line dashed"></span></span>
                                 </div>
@@ -181,7 +144,7 @@
                         <div class="video-section">
                             <figure class="vimeo">
                                 <a href="https://player.vimeo.com/video/219627581">
-                                    <img src="img/video.jpg" alt="image"/>
+                                    <img src="{{asset('img/video.jpg')}}" alt="image"/>
                                 </a>
                             </figure>
                         </div>
@@ -224,21 +187,21 @@
                         <div class="separator-wrap my-5">
                             <span class="separator"><span class="separator-line dashed"></span></span>
                         </div>
-                        <h6 class="mb-3">Archives</h6>
-                        <ul class="list-style circle-o pl-4 pb-0">
-                            <li>
-                                <a href="#" class="btn-link btn-primary pl-0">august 2017</a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-link btn-primary pl-0">july 2017</a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-link btn-primary pl-0">june 2017</a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-link btn-primary pl-0">may 2017</a>
-                            </li>
-                        </ul>
+{{--                        <h6 class="mb-3">Archives</h6>--}}
+{{--                        <ul class="list-style circle-o pl-4 pb-0">--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="btn-link btn-primary pl-0">august 2017</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="btn-link btn-primary pl-0">july 2017</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="btn-link btn-primary pl-0">june 2017</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="btn-link btn-primary pl-0">may 2017</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                     </div>
                 </div>
             </div>

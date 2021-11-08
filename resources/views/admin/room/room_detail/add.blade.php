@@ -59,6 +59,13 @@
                             <label for="dm-ecom-product-name">Name</label>
                             <input type="text" class="form-control" id="dm-ecom-product-name" name="room-name">
                         </div>
+
+                        <div class="form-group">
+                            <label for="dm-post-add-excerpt">Excerpt</label>
+                            <textarea class="form-control" id="dm-post-add-excerpt" name="room_excerpt" rows="3" placeholder="Enter an excerpt.."></textarea>
+                            <div class="form-text text-muted font-size-sm font-italic">Visible on blog post list as a small description of the post.</div>
+                        </div>
+
                         <div class="form-group">
                             <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.ckeditor()) -->
                             <!-- For more info and examples you can check out http://ckeditor.com -->
@@ -76,6 +83,40 @@
                                     <option value="{{$type->id}}">{{$type->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dm-ecom-product-name">Room Size</label>
+                            <input type="text" class="form-control" id="room_size" name="room_size">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dm-ecom-product-name">Occupancy</label>
+                            <input type="text" class="form-control" id="room_occupancy" name="room_occupancy">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dm-ecom-product-name">Bed Size</label>
+                            <input type="text" class="form-control" id="room_bed_size" name="room_bed_size">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dm-ecom-product-name">Swimming Pool</label>
+                            <select class="js-select2 form-control" id="swimming_pool" name="swimming_pool" style="width: 100%;" data-placeholder="Choose one..">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xl-6">
+                                <label>Featured Image</label>
+                                <div class="custom-file">
+                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                    <input type="file" class="custom-file-input" id="dm-post-add-image" name="image" data-toggle="custom-file-input">
+                                    <label class="custom-file-label" for="dm-post-add-image">Choose an image</label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row">

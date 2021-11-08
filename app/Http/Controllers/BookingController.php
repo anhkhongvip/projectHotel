@@ -109,6 +109,58 @@ class BookingController extends Controller
         return redirect(route("booking.index"));
     }
 
+    public function storeUser(Request $request)
+{
+//        $check_in = $request->checkin;
+//        $check_out = $request->checkout;
+//        $test = DB::select("select distinct room_id from orders where check_in_date <= '$check_in' and check_out_date >= '$check_out'
+//                                                                                    or check_in_date >= '$check_in' and check_in_date <= '$check_out'
+//                                                                                    or check_out_date >= '$check_in' and check_out_date <= '$check_out' and status = 0");
+//        dd($test);
+
+    $todayDate = date('Y-m-d');
+    $request->validate([
+//            'name' => 'required|min:3|max:191',
+//            'email' => 'required',
+        'check-in-date'    => 'required|date|date_format:Y-m-d|after_or_equal:'.$todayDate,
+        'check-out-date'      => 'required|date|after:check-in-date',
+    ]);
+
+    $check_in_date = $request->input('check-in-date');
+    $check_out_date = $request->input('check-out-date');
+    $customer = new customer();
+    $order = new order();
+
+    $order->total = $request->input('dm-ecom-product-total');
+    $customer->name = $request->input('customer_name');
+    $customer->email = $request->input('customer_email');
+    $customer->save();
+    $newest_customer = customer::orderBy('created_at', 'desc')->first();
+    $id_room = $request->input('dm-ecom-product-room');
+//        $room = room::find($id_room);
+//        $room->status = 1;
+//        $room->save();
+    $room_id = $request->input('dm-ecom-product-room');
+    $order->room_id = $room_id;
+    $order->customer_id = $newest_customer->id;
+    $order->check_in_date = $check_in_date;
+    $order->check_out_date = $check_out_date;
+    $order->save();
+    $ls_service_id = $request->input('service');
+
+    $newest_order = order::orderBy('created_at', 'desc')->first();
+    for ($i=0;$i<count($ls_service_id);$i++)
+    {
+        $split = explode('|', $ls_service_id[$i]);
+        $orderService = new order_service();
+        $orderService->service_id = $split[0];
+        $orderService->order_id = $newest_order->id;
+        $orderService->save();
+    }
+
+    return redirect(route("/"));
+}
+
     /**
      * Display the specified resource.
      *
@@ -212,7 +264,6 @@ class BookingController extends Controller
                                                                                    or (check_out_date >= '$check_in' and check_out_date <= '$check_out')) and status = 0)");
 
         return response(['data' => $list_room]);
-
     }
 
     public function detail($id)

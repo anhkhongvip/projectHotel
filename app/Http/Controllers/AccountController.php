@@ -82,7 +82,9 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $account = User::find($id);
+        $account->delete();
+        return redirect(route("account.index"));
     }
 
     public function changeRole(Request $request){

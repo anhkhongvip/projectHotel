@@ -12,4 +12,8 @@ class rooms_type extends Model
     public function rooms(){
         return $this->hasMany('App\Models\room');
     }
+
+    public function room_type_image(){
+        return $this->hasMany('App\Models\room_type_image');
+    }
 }

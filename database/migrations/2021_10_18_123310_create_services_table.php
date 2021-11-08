@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->string('description');
+            $table->string('icon_image');
             $table->timestamps();
         });
     }

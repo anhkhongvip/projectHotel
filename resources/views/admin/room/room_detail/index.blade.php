@@ -7,20 +7,20 @@
                 <i class="fa fa-times-circle"></i>
             </a>
         </div>
-        <div class="js-slider slick-nav-black slick-nav-hover slick-dotted-inner slick-dotted-white img-fluid-100" data-dots="true" data-arrows="true" data-autoplay="true" data-autoplay-speed="3000">
-            <div>
-                <img class="img-fluid" src="assets/media/photos/photo26@2x.jpg" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="assets/media/photos/photo28@2x.jpg" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="assets/media/photos/photo29@2x.jpg" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="assets/media/photos/photo30@2x.jpg" alt="">
-            </div>
-        </div>
+{{--        <div class="js-slider slick-nav-black slick-nav-hover slick-dotted-inner slick-dotted-white img-fluid-100" data-dots="true" data-arrows="true" data-autoplay="true" data-autoplay-speed="3000">--}}
+{{--            <div>--}}
+{{--                <img class="img-fluid" src="assets/media/photos/photo26@2x.jpg" alt="">--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <img class="img-fluid" src="assets/media/photos/photo28@2x.jpg" alt="">--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <img class="img-fluid" src="assets/media/photos/photo29@2x.jpg" alt="">--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <img class="img-fluid" src="assets/media/photos/photo30@2x.jpg" alt="">--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="js-slider slick-nav-black slick-nav-hover slick-dotted-inner slick-dotted-white img-fluid-100"
              data-dots="true" data-arrows="true" data-autoplay="true" data-autoplay-speed="3000" id="roomSlideImage"></div>
         <div class="content-side content-side-full">
@@ -62,7 +62,7 @@
         <!-- Quick Overview -->
         <div class="row row-deck">
             <div class="col-6 col-lg-3">
-                <a class="block block-rounded block-link-shadow text-center" href="#">
+                <a class="block block-rounded block-link-shadow text-center" href="{{route('rooms.create')}}">
                     <div class="block-content py-5">
                         <div class="font-size-h3 font-w600 text-success mb-1">
                             <i class="fa fa-plus"></i>
@@ -111,38 +111,38 @@
             <div class="block-header block-header-default">
                 <h3 class="block-title">All Rooms</h3>
                 <div class="block-options">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-light" id="dropdown-ecom-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filters
-                            <i class="fa fa-angle-down ml-1"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-ecom-filters">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Pending..
-                                <span class="badge badge-primary badge-pill">78</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Processing
-                                <span class="badge badge-secondary badge-pill">12</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                For Delivery
-                                <span class="badge badge-secondary badge-pill">20</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Canceled
-                                <span class="badge badge-secondary badge-pill">5</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                Delivered
-                                <span class="badge badge-secondary badge-pill">280</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                All
-                                <span class="badge badge-secondary badge-pill">19k</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="dropdown">--}}
+{{--                        <button type="button" class="btn btn-light" id="dropdown-ecom-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            Filters--}}
+{{--                            <i class="fa fa-angle-down ml-1"></i>--}}
+{{--                        </button>--}}
+{{--                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-ecom-filters">--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                Pending..--}}
+{{--                                <span class="badge badge-primary badge-pill">78</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                Processing--}}
+{{--                                <span class="badge badge-secondary badge-pill">12</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                For Delivery--}}
+{{--                                <span class="badge badge-secondary badge-pill">20</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                Canceled--}}
+{{--                                <span class="badge badge-secondary badge-pill">5</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                Delivered--}}
+{{--                                <span class="badge badge-secondary badge-pill">280</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">--}}
+{{--                                All--}}
+{{--                                <span class="badge badge-secondary badge-pill">19k</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="block-content bg-body-dark">
@@ -198,7 +198,7 @@
                 <!-- END All Orders Table -->
 
                 <!-- Pagination -->
-                <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
+                <div class="shop_pagination_area wow fadeInUp d-flex justify-content-end" data-wow-delay="1.1s">
 
                 </div>
                 <!-- END Pagination -->
@@ -217,34 +217,38 @@
                 }
             });
 
+            $('.js-slider').slick('unslick');
 
-                console.log(id);
-                let route = '{{route('getRoomDetail')}}';
-                $.ajax({
-                    method: 'GET',
-                    url: route,
-                    data: {
-                        id: id,
-                    },
-                    success : function (res){
-                        console.log(res);
-                        $("#roomNameDetail").html(res.room.name);
-                        $("#roomDescriptionDetail").html(res.room.description)
-                        let list_img = "";
-                        $.each(res.image_list, function(index, value){
-                            list_img += "<div><img class=\"img-fluid\" src=\"http://127.0.0.1:8000/"+value.image+"\" alt=\"\"></div>"
-                        })
-                        $('#roomSlideImage').html('').append(list_img);
-                        $('#roomSlideImage').slick({
-                            dots: true,
-                            infinite: true,
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        });
-                    }
+            console.log(id);
+            let route = '{{route('getRoomDetail')}}';
+            $.ajax({
+                method: 'GET',
+                url: route,
+                data: {
+                    id: id,
+                },
+                success : function (res){
+                    console.log(res);
+                    $("#roomNameDetail").html(res.room.name);
+                    $("#roomDescriptionDetail").html(res.room.description)
+                    let list_img = "";
+                    $.each(res.image_list, function(index, value){
+                        // list_img += "<div><img class=\"img-fluid\" src=\"http://127.0.0.1:8000/"+value.image+"\" alt=\"\"></div>"
+                        list_img += "<div>\n" +
+                            "                        <img class=\"img-fluid\" src=\"http://127.0.0.1:8000/"+value.image+"\" alt=\"\">\n" +
+                            "                    </div>"
 
-                })
-
+                    })
+                    $('#roomSlideImage').html('').append(list_img);
+                    $('#roomSlideImage').slick({
+                        dots: true,
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    });
+                    $('.slider').slick($('#roomSlideImage'));
+                }
+            })
         }
     </script>
 @endsection

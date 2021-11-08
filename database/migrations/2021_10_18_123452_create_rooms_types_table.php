@@ -19,7 +19,12 @@ class CreateRoomsTypesTable extends Migration
             $table->double('price');
             $table->integer('quantity');
             $table->string('description');
+            $table->string('excerpt');
             $table->string('image');
+            $table->string('room_size');
+            $table->string('occupancy');
+            $table->string('bed_size');
+            $table->string('swimming_pool');
             $table->integer('bedroom');
             $table->integer('bathroom');
             $table->timestamps();
