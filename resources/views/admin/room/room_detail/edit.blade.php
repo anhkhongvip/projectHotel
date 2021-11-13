@@ -1,12 +1,5 @@
 @extends('layouts.layoutAdmin')
 @section('content')
-    @if(count($errors) > 0)
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $err)
-                <p>{{$err}}</p>
-            @endforeach
-        </div>
-    @endif
     <!-- Page Content -->
     <div class="content">
         <!-- Quick Overview + Actions -->
@@ -59,6 +52,13 @@
             <div class="block-content">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    <p>{{$err}}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <form action="{{route('rooms.update', $room->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

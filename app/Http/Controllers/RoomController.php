@@ -47,6 +47,16 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'room-name' => 'required|min:3|max:191',
+            'room_excerpt' => 'required',
+            'room-description' => 'required',
+            'room_occupancy' => 'required',
+            'room_size' => 'required',
+            'room_bed_size' => 'required',
+
+        ]);
+
         $room = new room();
         $room->name = $request->input('room-name');
         $room->excerpt = $request->input('room_excerpt');
@@ -124,6 +134,16 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'room-name' => 'required|min:3|max:191',
+            'room_excerpt' => 'required',
+            'room-description' => 'required',
+            'room_occupancy' => 'required',
+            'room_size' => 'required',
+            'room_bed_size' => 'required',
+
+        ]);
+
         $room = room::find($id);
         $room->name = $request->input('room-name');
         $room->excerpt = $request->input('room_excerpt');

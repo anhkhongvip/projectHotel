@@ -46,7 +46,7 @@
                                             <img src="img/5.svg" alt="">
                                             <img src="img/2.svg" alt="">
                                             <img src="img/3.svg" alt="">
-                                            <a href="#">full info</a>
+{{--                                            <a href="#">full info</a>--}}
                                         </div>
                                     </div>
                                 </div>

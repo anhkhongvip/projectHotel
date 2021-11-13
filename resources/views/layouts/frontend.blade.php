@@ -163,9 +163,9 @@
                 <h6 class="color-white mb-3">about us</h6>
                 <p class="color-grey mb-4">B52 Hotel is located a 2-minute drive from the A2 highway,
                     5.5 kilometers from the Poznań International Fair and the Poznań Główny railway station.</p>
-                <img src="img/logos/1.png" alt="">
-                <img src="img/logos/2.png" alt="">
-                <img src="img/logos/3.png" alt="">
+{{--                <img src="img/logos/1.png" alt="">--}}
+{{--                <img src="img/logos/2.png" alt="">--}}
+{{--                <img src="img/logos/3.png" alt="">--}}
             </div>
         </div>
     </div>

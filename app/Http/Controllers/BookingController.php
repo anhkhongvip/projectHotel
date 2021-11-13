@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\B52HotelMail;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use App\Models\customer;
 use App\Models\order;
@@ -68,8 +70,9 @@ class BookingController extends Controller
 
         $todayDate = date('Y-m-d');
         $request->validate([
-//            'name' => 'required|min:3|max:191',
-//            'email' => 'required',
+            'customer_name' => 'required|min:3|max:191',
+            'customer_email' => 'required',
+            'customer_phone' => 'required',
             'check-in-date'    => 'required|date|date_format:Y-m-d|after_or_equal:'.$todayDate,
             'check-out-date'      => 'required|date|after:check-in-date',
         ]);
@@ -82,6 +85,8 @@ class BookingController extends Controller
         $order->total = $request->input('dm-ecom-product-total');
         $customer->name = $request->input('customer_name');
         $customer->email = $request->input('customer_email');
+        $customer->phone = $request->input('customer_phone');
+
         $customer->save();
         $newest_customer = customer::orderBy('created_at', 'desc')->first();
         $id_room = $request->input('dm-ecom-product-room');
@@ -97,15 +102,18 @@ class BookingController extends Controller
         $ls_service_id = $request->input('service');
 
         $newest_order = order::orderBy('created_at', 'desc')->first();
-        for ($i=0;$i<count($ls_service_id);$i++)
+        if(isset($ls_service_id))
         {
-            $split = explode('|', $ls_service_id[$i]);
-            $orderService = new order_service();
-            $orderService->service_id = $split[0];
-            $orderService->order_id = $newest_order->id;
-            $orderService->save();
+            for ($i=0;$i<count($ls_service_id);$i++)
+            {
+                $split = explode('|', $ls_service_id[$i]);
+                $orderService = new order_service();
+                $orderService->service_id = $split[0];
+                $orderService->order_id = $newest_order->id;
+                $orderService->save();
+            }
         }
-
+        \Mail::to($customer->email)->send(new \App\Mail\B52HotelMail());
         return redirect(route("booking.index"));
     }
 
@@ -120,8 +128,10 @@ class BookingController extends Controller
 
     $todayDate = date('Y-m-d');
     $request->validate([
-//            'name' => 'required|min:3|max:191',
-//            'email' => 'required',
+        'customer_name' => 'required|min:3|max:191',
+        'customer_email' => 'required',
+        'customer_phone' => 'required',
+
         'check-in-date'    => 'required|date|date_format:Y-m-d|after_or_equal:'.$todayDate,
         'check-out-date'      => 'required|date|after:check-in-date',
     ]);
@@ -134,7 +144,18 @@ class BookingController extends Controller
     $order->total = $request->input('dm-ecom-product-total');
     $customer->name = $request->input('customer_name');
     $customer->email = $request->input('customer_email');
+    $customer->phone = $request->input('customer_phone');
+//      Send mail
+//        $data = array(
+//            'name' => $request->name,
+//            'phone' => $request->phone
+//        );
+//        $mail = new \App\Mail\B52HotelMail($data);
+//        \Mail::to($request->email_address)->send($mail);
+
     $customer->save();
+
+
     $newest_customer = customer::orderBy('created_at', 'desc')->first();
     $id_room = $request->input('dm-ecom-product-room');
 //        $room = room::find($id_room);
@@ -149,15 +170,32 @@ class BookingController extends Controller
     $ls_service_id = $request->input('service');
 
     $newest_order = order::orderBy('created_at', 'desc')->first();
-    for ($i=0;$i<count($ls_service_id);$i++)
+    if(isset($ls_service_id))
     {
-        $split = explode('|', $ls_service_id[$i]);
-        $orderService = new order_service();
-        $orderService->service_id = $split[0];
-        $orderService->order_id = $newest_order->id;
-        $orderService->save();
+        for ($i=0;$i<count($ls_service_id);$i++)
+        {
+            $split = explode('|', $ls_service_id[$i]);
+            $orderService = new order_service();
+            $orderService->service_id = $split[0];
+            $orderService->order_id = $newest_order->id;
+            $orderService->save();
+        }
     }
 
+        //                Send mail
+        $details = array(
+            'name' => $customer->name,
+            'room_name' => $order->room->name,
+            'excerpt' => $order->room->excerpt,
+            'price' => $order->room->rooms_type->price,
+            'room_image' => $order->room->image,
+            'check_in_date' => $order->check_in_date,
+            'check_out_date' => $order->check_out_date,
+            'total' => $order->total,
+        );
+        $mail = new \App\Mail\B52HotelMail($details);
+//        \Mail::to($request->email)->send(new \App\Mail\B52HotelMail());
+    \Mail::to($customer->email)->send($mail);
     return redirect(route("/"));
 }
 
@@ -201,8 +239,10 @@ class BookingController extends Controller
         $current_order = order::find($id);
         $todayDate = date('Y-m-d');
         $request->validate([
-//            'name' => 'required|min:3|max:191',
-//            'email' => 'required',
+            'customer_name' => 'required|min:3|max:191',
+            'customer_email' => 'required',
+            'customer_phone' => 'required',
+
             'check-in-date'    => 'required|date|date_format:Y-m-d|after_or_equal:'.$todayDate,
             'check-out-date'      => 'required|date|after_or_equal:check-in-date',
         ]);
@@ -215,6 +255,7 @@ class BookingController extends Controller
         $order->total = $request->input('dm-ecom-product-total');
         $customer->name = $request->input('customer_name');
         $customer->email = $request->input('customer_email');
+        $customer->phone = $request->input('customer_phone');
         $customer->save();
         $newest_customer = customer::orderBy('created_at', 'desc')->first();
         $id_room = $request->input('dm-ecom-product-room');
@@ -230,17 +271,18 @@ class BookingController extends Controller
         $ls_service_id = $request->input('service');
 
         $newest_order = order::orderBy('created_at', 'desc')->first();
-        for ($i=0;$i<count($ls_service_id);$i++)
+        if(isset($ls_service_id))
         {
-            $split = explode('|', $ls_service_id[$i]);
-            $orderService = new order_service();
-            $orderService->service_id = $split[0];
-            $orderService->order_id = $newest_order->id;
-            $orderService->save();
+            for ($i=0;$i<count($ls_service_id);$i++)
+            {
+                $split = explode('|', $ls_service_id[$i]);
+                $orderService = new order_service();
+                $orderService->service_id = $split[0];
+                $orderService->order_id = $newest_order->id;
+                $orderService->save();
+            }
         }
 
-
-        return redirect(route("booking.index"));
     }
 
     /**
@@ -268,8 +310,8 @@ class BookingController extends Controller
 
     public function detail($id)
     {
-        $order = order::find($id);
-        return view('admin.booking.detail')->with(['order' => $order]);
+        $Order = order::find($id);
+        return view('admin.booking.detail')->with(['Order' => $Order]);
     }
 
     public function changeStatus(Request $request){
@@ -283,4 +325,5 @@ class BookingController extends Controller
             'desc' => 'Change status success',
         ]);
     }
+
 }

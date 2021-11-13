@@ -132,7 +132,7 @@
                 <div class="section clearfix"></div>
                 <div class="col-md-8 text-center mt-5" data-scroll-reveal="enter bottom move 50px over 0.7s after 0.2s">
                     <p class="mb-0"><em>available at: 8am - 10pm</em></p>
-                    <h2 class="text-opacity">+21 60 374 7537</h2>
+                    <h2 class="text-opacity">+84 2473009955</h2>
                 </div>
             </div>
             <div class="row justify-content-center">

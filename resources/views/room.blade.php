@@ -46,7 +46,7 @@
                                                 <img src="img/5.svg" alt="">
                                                 <img src="img/2.svg" alt="">
                                                 <img src="img/3.svg" alt="">
-                                                <a href="#">full info</a>
+{{--                                                <a href="#">full info</a>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -210,19 +210,19 @@
                                 {{--                                            </div>--}}
                                 {{--                                        </div>--}}
                                 {{--                                    </div>--}}
-                                <div class="col-12 col-md-6 col-lg-12 mt-2">
-                                    <h6 class="color-white mb-3">Services:</h6>
-                                    @foreach($lsService as $service)
-                                        <ul class="list">
-                                            <li class="list__item mb-3">
-                                                <label class="label--checkbox" for="exampleCheck1">
-                                                    <input type="checkbox" class="checkbox" id="service{{$service->id}}" value="{{$service->id}}|{{$service->price}}" onchange="changeService(event, {{$service->id}})"
-                                                           name="service[]" id-service="service{{$service->id}}">
-                                                    {{$service->name}}
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    @endforeach
+{{--                                <div class="col-12 col-md-6 col-lg-12 mt-2">--}}
+{{--                                    <h6 class="color-white mb-3">Services:</h6>--}}
+{{--                                    @foreach($lsService as $service)--}}
+{{--                                        <ul class="list">--}}
+{{--                                            <li class="list__item mb-3">--}}
+{{--                                                <label class="label--checkbox" for="exampleCheck1">--}}
+{{--                                                    <input type="checkbox" class="checkbox" id="service{{$service->id}}" value="{{$service->id}}|{{$service->price}}" onchange="changeService(event, {{$service->id}})"--}}
+{{--                                                           name="service[]" id-service="service{{$service->id}}">--}}
+{{--                                                    {{$service->name}}--}}
+{{--                                                </label>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    @endforeach--}}
 
                                     {{--                                        <ul class="list">--}}
                                     {{--                                            <li class="list__item">--}}
@@ -256,7 +256,7 @@
                                     {{--                                                </label>--}}
                                     {{--                                            </li>--}}
                                     {{--                                        </ul>--}}
-                                </div>
+{{--                                </div>--}}
 
 
 
@@ -349,7 +349,6 @@
         var checkOut = document.querySelector('#dm-project-check-out');
         var room_type_id = document.querySelector('#dm-ecom-product-roomtype');
 
-
         function getSearchRoom (event){
             event.preventDefault();
             $.ajaxSetup
@@ -388,35 +387,35 @@
 
                 },
                 success : function (res){
-                    {{--if (res.data){--}}
-                    {{--    let html = "";--}}
-                    {{--    $.each(res.data, function (index,value){--}}
-                    {{--    --}}{{--    html += "<div class=\"col-lg-6 mt-4\" data-scroll-reveal=\"enter bottom move 50px over 0.7s after 0.2s\">\n" +--}}
-                    {{--    --}}{{--        "                            <div class=\"room-box background-grey\">\n" +--}}
-                    {{--    --}}{{--        "                                <div class=\"room-name\">"+value.name+"</div>\n" +--}}
-                    {{--    --}}{{--        "                            <div class=\"room-per\">\n" +--}}
-                    {{--    --}}{{--        "                                <i class=\"fa fa-star\"></i>\n" +--}}
-                    {{--    --}}{{--        "                                <i class=\"fa fa-star\"></i>\n" +--}}
-                    {{--    --}}{{--        "                                <i class=\"fa fa-star\"></i>\n" +--}}
-                    {{--    --}}{{--        "                                <i class=\"fa fa-star\"></i>\n" +--}}
-                    {{--    --}}{{--        "                                <i class=\"fa fa-star\"></i>\n" +--}}
-                    {{--    --}}{{--        "                            </div>\n" +--}}
-                    {{--    --}}{{--        "                            <img src=\"{{asset($roomType->image)}}\" style=\"height: 185.15px\" alt=\"\">   --}}{{----}}{{-- img/room5.jpg--}}{{----}}{{--\n" +--}}
-                    {{--    --}}{{--        "                            <div class=\"room-box-in\">\n" +--}}
-                    {{--    --}}{{--        "                            <p class=\"mt-3\">"+value.excerpt+"</p>\n" +--}}
-                    {{--    --}}{{--        "                            <a class=\"mt-1 btn btn-primary\" href=\"{{route('roomdetail', $roomType->id)}}\">See more</a>\n" +--}}
-                    {{--    --}}{{--        "                            <div class=\"room-icons mt-4 pt-4\">\n" +--}}
-                    {{--    --}}{{--        "                                <img src=\"img/5.svg\" alt=\"\">\n" +--}}
-                    {{--    --}}{{--        "                                    <img src=\"img/2.svg\" alt=\"\">\n" +--}}
-                    {{--    --}}{{--        "                                        <img src=\"img/3.svg\" alt=\"\">\n" +--}}
-                    {{--    --}}{{--        "                                            <a href=\"#\">full info</a>\n" +--}}
-                    {{--    --}}{{--        "  </div>\n" +--}}
-                    {{--    --}}{{--        "  </div>\n" +--}}
-                    {{--    --}}{{--        "  </div>\n" +--}}
-                    {{--    --}}{{--        "  </div>"--}}
-                    {{--    --}}{{--})--}}
-                    {{--    $('#dm-ecom-product-room').html('').append(html);--}}
-                    {{--}--}}
+                    if (res.data){
+                        let html = "";
+                        console.log(res.data);
+                        $.each(res.data, function (index,value){
+                            html += "<div class=\"col-lg-6 mt-4\" data-scroll-reveal=\"enter bottom move 50px over 0.7s after 0.2s\">\n" +
+                                "                            <div class=\"room-box background-grey\">\n" +
+                                "                                <div class=\"room-name\">"+value.name+"</div>\n" +
+                                "                            <div class=\"room-per\">\n" +
+                                "                                <i class=\"fa fa-star\"></i>\n" +
+                                "                                <i class=\"fa fa-star\"></i>\n" +
+                                "                                <i class=\"fa fa-star\"></i>\n" +
+                                "                                <i class=\"fa fa-star\"></i>\n" +
+                                "                                <i class=\"fa fa-star\"></i>\n" +
+                                "                            </div>\n" +
+                                "                            <img src=\"http://127.0.0.1:8000/"+value.image+"\" style=\"height: 185.15px\" alt=\"\"> \n" +
+                                "                            <div class=\"room-box-in\">\n" +
+                                "                            <p class=\"mt-3\">"+value.excerpt+"</p>\n" +
+                                "                            <a class=\"mt-1 btn btn-primary\" href=\"{{route('roomdetail', $room->id)}}\">See more</a>\n" +
+                                "                            <div class=\"room-icons mt-4 pt-4\">\n" +
+                                "                                <img src=\"img/5.svg\" alt=\"\">\n" +
+                                "                                    <img src=\"img/2.svg\" alt=\"\">\n" +
+                                "                                        <img src=\"img/3.svg\" alt=\"\">\n" +
+                                "  </div>\n" +
+                                "  </div>\n" +
+                                "  </div>\n" +
+                                "  </div>"
+                        })
+                        $('#loadRoomSearch').html('').append(html);
+                    }
                 }
 
             })

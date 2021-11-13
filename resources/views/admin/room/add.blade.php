@@ -53,6 +53,13 @@
             <div class="block-content">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    <p>{{$err}}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <form action="{{route('roomtype.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">

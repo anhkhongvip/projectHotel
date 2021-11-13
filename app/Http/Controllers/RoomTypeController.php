@@ -38,6 +38,13 @@ class RoomTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'room_type_name' => 'required|min:3|max:191',
+            'room_type_price' => 'required',
+            'room_type_excerpt' => 'required',
+            'room_type_description' => 'required'
+        ]);
+
         $room_type = new rooms_type();
         $room_type->name = $request->input('room_type_name');
         $room_type->price = $request->input('room_type_price');

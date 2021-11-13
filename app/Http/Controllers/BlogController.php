@@ -47,6 +47,13 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:191',
+            'excerpt' => 'required',
+            'body' => 'required',
+
+        ]);
+
         $post = new posts();
         $post->title = $request->input('title');
         $post->content = $request->input('excerpt');
@@ -94,6 +101,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:191',
+            'excerpt' => 'required',
+            'body' => 'required',
+
+        ]);
+        
         $post = posts::find($id);
         $post->title = $request->input('title');
         $post->content = $request->input('excerpt');

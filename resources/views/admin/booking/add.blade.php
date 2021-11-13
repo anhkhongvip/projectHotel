@@ -29,6 +29,11 @@
                                 <input type="email" class="form-control" id="dm-ecom-product-email" name="customer_email">
                             </div>
 
+                            <div class="form-group subscribe-box mt-3">
+                                <label for="dm-ecom-product-name">Phone</label>
+                                <input type="text" class="form-control" id="dm-ecom-product-name" name="customer_phone" style="color: white">
+                            </div>
+
                             <div class="form-group">
                                 <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
                                 <!-- For more info and examples you can check out https://github.com/select2/select2 -->

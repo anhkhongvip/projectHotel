@@ -18,8 +18,16 @@
     <!-- END Hero -->
 
     <!-- Page Content -->
+
     <div class="content content-full content-boxed">
         <!-- New Post -->
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $err)
+                    <p>{{$err}}</p>
+                @endforeach
+            </div>
+        @endif
         <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="block">
@@ -27,12 +35,12 @@
                     <a class="btn btn-light" href="be_pages_blog_post_manage.html">
                         <i class="fa fa-arrow-left mr-1"></i> Manage Posts
                     </a>
-                    <div class="block-options">
-                        <div class="custom-control custom-switch custom-control-success">
-                            <input type="checkbox" class="custom-control-input" id="dm-post-add-active" name="dm-post-add-active">
-                            <label class="custom-control-label" for="dm-post-add-active">Set post as active</label>
-                        </div>
-                    </div>
+{{--                    <div class="block-options">--}}
+{{--                        <div class="custom-control custom-switch custom-control-success">--}}
+{{--                            <input type="checkbox" class="custom-control-input" id="dm-post-add-active" name="dm-post-add-active">--}}
+{{--                            <label class="custom-control-label" for="dm-post-add-active">Set post as active</label>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="block-content">
                     <div class="row justify-content-center push">

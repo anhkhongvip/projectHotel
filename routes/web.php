@@ -62,6 +62,7 @@ Route::get('/terms', [App\Http\Controllers\WebController::class, 'terms'])->name
 Route::get('/testimonials', [App\Http\Controllers\WebController::class, 'testimonials'])->name('testimonials');
 Route::get('/booking', [App\Http\Controllers\WebController::class, 'booking'])->name('booking');
 
+
 //Route::get('/post/{id}', [App\Http\Controllers\TestController::class, 'post'])->name('post');
 
 

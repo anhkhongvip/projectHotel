@@ -25,44 +25,44 @@
         </div>
     </div>
 
-    <div class="section background-dark z-too-big">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row justify-content-center home-translate">
-                        <div class="col-xl-8">
-                            <div class="row justify-content-center home-shadow">
-                                <div class="col-md-6 px-sm-0">
-                                    <div class="booking-sep-wrap">
-                                        <div class="input-daterange input-group" id="flight-datepicker-1">
-                                            <div class="form-item">
-                                                <span class="fontawesome-calendar"></span>
-                                                <input class="input-sm" type="text" autocomplete="off" id="start-date" name="start" placeholder="check-in" data-date-format="DD, MM d"/>
-                                                <span class="date-text date-depart"></span>
-                                            </div>
-                                            <div class="form-item">
-                                                <span class="fontawesome-calendar"></span>
-                                                <input class="input-sm" type="text" autocomplete="off" id="end-date" name="end" placeholder="check-out" data-date-format="DD, MM d"/>
-                                                <span class="date-text date-return"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 px-sm-0">
-                                    <div class="quantity">
-                                        <input type="number" min="1" max="9999" step="1" value="1" >
-                                    </div>
-                                </div>
-                                <div class="col-md-3 px-sm-0">
-                                    <a class="booking-button-big" href="{{asset('search')}}">check<br>availability</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="section background-dark z-too-big">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="row justify-content-center home-translate">--}}
+{{--                        <div class="col-xl-8">--}}
+{{--                            <div class="row justify-content-center home-shadow">--}}
+{{--                                <div class="col-md-6 px-sm-0">--}}
+{{--                                    <div class="booking-sep-wrap">--}}
+{{--                                        <div class="input-daterange input-group" id="flight-datepicker-1">--}}
+{{--                                            <div class="form-item">--}}
+{{--                                                <span class="fontawesome-calendar"></span>--}}
+{{--                                                <input class="input-sm" type="text" autocomplete="off" id="start-date" name="start" placeholder="check-in" data-date-format="DD, MM d"/>--}}
+{{--                                                <span class="date-text date-depart"></span>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="form-item">--}}
+{{--                                                <span class="fontawesome-calendar"></span>--}}
+{{--                                                <input class="input-sm" type="text" autocomplete="off" id="end-date" name="end" placeholder="check-out" data-date-format="DD, MM d"/>--}}
+{{--                                                <span class="date-text date-return"></span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-3 px-sm-0">--}}
+{{--                                    <div class="quantity">--}}
+{{--                                        <input type="number" min="1" max="9999" step="1" value="1" >--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-3 px-sm-0">--}}
+{{--                                    <a class="booking-button-big" href="{{asset('search')}}">check<br>availability</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="section padding-top-bottom over-hide">
         <div class="container">
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="section background-grey over-hide">
+    <div class="section background-grey over-hide" style="margin-bottom: 100px">
         <div class="container-fluid px-0">
             <div class="row mx-0">
                 <div class="col-xl-6 px-0">

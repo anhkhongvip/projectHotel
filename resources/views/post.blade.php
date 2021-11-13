@@ -38,72 +38,72 @@
                                 <div class="separator-wrap pt-4 pb-4">
                                     <span class="separator"><span class="separator-line dashed"></span></span>
                                 </div>
-                                <div class="author-wrap">
-                                    <img  src="img/t2.jpg" alt="" />
-                                    <p> by <a href="#">Anna Kulis</a></p>
-                                </div>
+{{--                                <div class="author-wrap">--}}
+{{--                                    <img  src="img/t2.jpg" alt="" />--}}
+{{--                                    <p> by <a href="#">Anna Kulis</a></p>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
-                    <div class="section drop-shadow rounded mt-4">
-                        <div class="post-comm-box background-white over-hide">
-                            <h5 class="mb-3">4 comments</h5>
-                            <div class="separator-wrap pt-3 pb-4">
-                                <span class="separator"><span class="separator-line dashed"></span></span>
-                            </div>
-                            <div class="section">
-                                <img  src="img/t2.jpg" alt="" />
-                                <h6>Anna Kulis <small>April 25, 2017 at 1:03 am</small></h6>
-                                <p class="mt-2">Some people think <u>line of text as underlined</u> design means how it looks. <del>This line of text is deleted text.</del> But of course, if you dig deeper, <strong>bold text</strong> it's really how it works. You can use the mark tag to <mark>highlight</mark> text. <em>Italicized text.</em></p>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>
-                            </div>
-                            <div class="separator-wrap pt-4 pb-4">
-                                <span class="separator"><span class="separator-line dashed"></span></span>
-                            </div>
-                            <div class="section pl-5">
-                                <img  src="img/t1.jpg" alt="" />
-                                <h6>Marco Furius <small>April 25, 2017 at 1:03 am</small></h6>
-                                <p class="mt-2">Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>
-                            </div>
-                            <div class="separator-wrap pt-4 pb-4">
-                                <span class="separator"><span class="separator-line dashed"></span></span>
-                            </div>
-                            <div class="section">
-                                <img  src="img/t3.jpg" alt="" />
-                                <h6>John Doe <small>April 25, 2017 at 1:03 am</small></h6>
-                                <p class="mt-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>
-                            </div>
-                            <div class="separator-wrap pt-4 pb-4">
-                                <span class="separator"><span class="separator-line dashed"></span></span>
-                            </div>
-                            <div class="section">
-                                <img  src="img/t1.jpg" alt="" />
-                                <h6>Marco Kulis <small>April 25, 2017 at 1:03 am</small></h6>
-                                <p class="mt-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section drop-shadow rounded mt-4">
-                        <div class="post-comm-box background-white over-hide">
-                            <h5 class="mb-3">Leave a comment</h5>
-                            <div class="subscribe-box mt-3">
-                                <input type="text" value="" placeholder="Your Name *" class="form-control" />
-                            </div>
-                            <div class="subscribe-box mt-4">
-                                <input type="text" value="" placeholder="Email *" class="form-control" />
-                            </div>
-                            <div class="subscribe-box mt-4">
-                                <input type="text" value="" placeholder="Website" class="form-control" />
-                            </div>
-                            <div class="subscribe-box mt-4">
-                                <textarea name="message"  placeholder="Comment *" class="for-textarea form-control" ></textarea>
-                            </div>
-                            <button class="btn btn-primary btn-round btn-long mt-4" type="button"><span>submit comment</span></button>
-                        </div>
-                    </div>
+{{--                    <div class="section drop-shadow rounded mt-4">--}}
+{{--                        <div class="post-comm-box background-white over-hide">--}}
+{{--                            <h5 class="mb-3">4 comments</h5>--}}
+{{--                            <div class="separator-wrap pt-3 pb-4">--}}
+{{--                                <span class="separator"><span class="separator-line dashed"></span></span>--}}
+{{--                            </div>--}}
+{{--                            <div class="section">--}}
+{{--                                <img  src="img/t2.jpg" alt="" />--}}
+{{--                                <h6>Anna Kulis <small>April 25, 2017 at 1:03 am</small></h6>--}}
+{{--                                <p class="mt-2">Some people think <u>line of text as underlined</u> design means how it looks. <del>This line of text is deleted text.</del> But of course, if you dig deeper, <strong>bold text</strong> it's really how it works. You can use the mark tag to <mark>highlight</mark> text. <em>Italicized text.</em></p>--}}
+{{--                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>--}}
+{{--                            </div>--}}
+{{--                            <div class="separator-wrap pt-4 pb-4">--}}
+{{--                                <span class="separator"><span class="separator-line dashed"></span></span>--}}
+{{--                            </div>--}}
+{{--                            <div class="section pl-5">--}}
+{{--                                <img  src="img/t1.jpg" alt="" />--}}
+{{--                                <h6>Marco Furius <small>April 25, 2017 at 1:03 am</small></h6>--}}
+{{--                                <p class="mt-2">Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>--}}
+{{--                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>--}}
+{{--                            </div>--}}
+{{--                            <div class="separator-wrap pt-4 pb-4">--}}
+{{--                                <span class="separator"><span class="separator-line dashed"></span></span>--}}
+{{--                            </div>--}}
+{{--                            <div class="section">--}}
+{{--                                <img  src="img/t3.jpg" alt="" />--}}
+{{--                                <h6>John Doe <small>April 25, 2017 at 1:03 am</small></h6>--}}
+{{--                                <p class="mt-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>--}}
+{{--                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>--}}
+{{--                            </div>--}}
+{{--                            <div class="separator-wrap pt-4 pb-4">--}}
+{{--                                <span class="separator"><span class="separator-line dashed"></span></span>--}}
+{{--                            </div>--}}
+{{--                            <div class="section">--}}
+{{--                                <img  src="img/t1.jpg" alt="" />--}}
+{{--                                <h6>Marco Kulis <small>April 25, 2017 at 1:03 am</small></h6>--}}
+{{--                                <p class="mt-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>--}}
+{{--                                <a href="#" class="btn btn-primary btn-sm ml-0 mr-1 mt-3 mb-1"><span>reply</span></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="section drop-shadow rounded mt-4">--}}
+{{--                        <div class="post-comm-box background-white over-hide">--}}
+{{--                            <h5 class="mb-3">Leave a comment</h5>--}}
+{{--                            <div class="subscribe-box mt-3">--}}
+{{--                                <input type="text" value="" placeholder="Your Name *" class="form-control" />--}}
+{{--                            </div>--}}
+{{--                            <div class="subscribe-box mt-4">--}}
+{{--                                <input type="text" value="" placeholder="Email *" class="form-control" />--}}
+{{--                            </div>--}}
+{{--                            <div class="subscribe-box mt-4">--}}
+{{--                                <input type="text" value="" placeholder="Website" class="form-control" />--}}
+{{--                            </div>--}}
+{{--                            <div class="subscribe-box mt-4">--}}
+{{--                                <textarea name="message"  placeholder="Comment *" class="for-textarea form-control" ></textarea>--}}
+{{--                            </div>--}}
+{{--                            <button class="btn btn-primary btn-round btn-long mt-4" type="button"><span>submit comment</span></button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-lg-4 mt-4 mt-lg-0">
                     <div class="sidebar-box background-white drop-shadow rounded">

@@ -56,11 +56,17 @@
                                 </div>
 
                                 <div class="form-group subscribe-box mt-3">
+                                    <label for="dm-ecom-product-name" style="color: white">Phone</label>
+                                    <input type="text" class="form-control" id="dm-ecom-product-name" name="customer_phone" style="color: white">
+                                </div>
+
+                                <div class="form-group subscribe-box mt-3">
                                     <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
                                     <!-- For more info and examples you can check out https://github.com/select2/select2 -->
                                     <label for="dm-ecom-product-category" style="color: white">Room's type</label>
 
                                     <select class="js-select2 wide col-12 form-control" id="dm-ecom-product-roomtype" name="dm-ecom-product-roomtype" style="width: 100%;" data-placeholder="Choose one..">
+                                        <option value="">Choose Room's Type</option>
                                         @foreach($lsRoomType as $type)
                                             <option value="{{$type->id}}|{{$type->price}}" style="color: white">{{$type->name}}</option>
                                         @endforeach

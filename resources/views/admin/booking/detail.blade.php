@@ -74,11 +74,11 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>{{$order->id}}</strong></a></td>
-                            <td><a href="be_pages_ecom_product_edit.html"><strong>{{$order->room->name}}</strong></a></td>
-                            <td class="text-center">{{$order->check_in_date}}</td>
-                            <td class="text-center">{{$order->check_out_date}}</td>
-                            <td class="text-right">${{$order->total}}</td>
+                            <td class="text-center"><a href="be_pages_ecom_product_edit.html"><strong>{{$Order->id}}</strong></a></td>
+                            <td><a href="be_pages_ecom_product_edit.html"><strong>{{$Order->room->name}}</strong></a></td>
+                            <td class="text-center">{{$Order->check_in_date}}</td>
+                            <td class="text-center">{{$Order->check_out_date}}</td>
+                            <td class="text-right">${{$Order->total}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -89,44 +89,43 @@
 
         <!-- Customer -->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <!-- Billing Address -->
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Billing Address</h3>
                     </div>
                     <div class="block-content">
-                        <div class="font-size-h4 mb-1">{{$order->customer->name}}</div>
+                        <div class="font-size-h4 mb-1">{{$Order->customer->name}}</div>
                         <address class="font-size-sm">
-                            Sunset Str 598<br>
-                            Melbourne<br>
-                            Australia, 11-671<br><br>
-                            <i class="fa fa-phone"></i> (999) 888-77777<br>
-                            <i class="fa fa-envelope-o"></i> <a href="#">{{$order->customer->email}}</a>
+{{--                            Sunset Str 598<br>--}}
+{{--                            Melbourne<br>--}}
+{{--                            Australia, 11-671<br><br>--}}
+                            <i class="fa fa-phone mr-2"></i>{{$Order->customer->phone}}<br>
+                            <i class="fa fa-envelope-o"></i> <a href="#">{{$Order->customer->email}}</a>
                         </address>
                     </div>
                 </div>
                 <!-- END Billing Address -->
             </div>
-            <div class="col-sm-6">
-                <!-- Shipping Address -->
-                <div class="block block-rounded">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Shipping Address</h3>
-                    </div>
-                    <div class="block-content">
-                        <div class="font-size-h4 mb-1">Helen Jacobs</div>
-                        <address class="font-size-sm">
-                            Sunrise Str 620<br>
-                            Melbourne<br>
-                            Australia, 11-587<br><br>
-                            <i class="fa fa-phone"></i> (999) 888-55555<br>
-                            <i class="fa fa-envelope-o"></i> <a href="javascript:void(0)">company@example.com</a>
-                        </address>
-                    </div>
-                </div>
-                <!-- END Shipping Address -->
-            </div>
+{{--            <div class="col-sm-6">--}}
+{{--                <!-- Shipping Address -->--}}
+{{--                <div class="block block-rounded">--}}
+{{--                    <div class="block-header block-header-default">--}}
+{{--                        <h3 class="block-title">Service</h3>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="block-content">--}}
+{{--                        <div class="font-size-h4 mb-1">All service book</div>--}}
+{{--                        @foreach($Order as $order)--}}
+{{--                        <p class="font-size-sm">--}}
+{{--                            {{$order->service->name}}--}}
+{{--                        </p>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <!-- END Shipping Address -->--}}
+{{--            </div>--}}
         </div>
         <!-- END Customer -->
 

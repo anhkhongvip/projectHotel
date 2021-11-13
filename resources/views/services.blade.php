@@ -161,7 +161,7 @@
                                 <h5 class="">{{$lsServices[$i]->name}}</h5>
                                 <p class="mt-3">{{$lsServices[$i]->description}}</p>
 {{--                                <a class="mt-1 btn btn-primary" href="{{asset('post')}}">explore</a>--}}
-                                <a class="mt-1 btn btn-primary" href="#">explore</a>
+{{--                                <a class="mt-1 btn btn-primary" href="#">explore</a>--}}
                             </div>
                         </div>
                     </div>
