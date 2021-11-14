@@ -167,10 +167,7 @@
                                     <label for="dm-ecom-product-category" style="color: white">Room's type</label>
 
                                     <select class="wide col-12 mb-4" id="dm-ecom-product-roomtype" name="dm-ecom-product-roomtype" style="width: 100%;">
-                                        <option value="" selected data-placeholder="Choose one.."></option>
-                                        @foreach($lsRoomType as $type)
-                                            <option value="{{$type->id}}|{{$type->price}}">{{$type->name}}</option>
-                                        @endforeach
+                                        <option value="{{$lsRoomType[0]->id}}" readonly>{{$lsRoomType[0]->name}}</option>
                                     </select>
 
                                     <button type="submit" class="btn btn-primary col-12 " onclick="getSearchRoom(event)">Search</button>

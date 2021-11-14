@@ -183,6 +183,8 @@ class BookingController extends Controller
     }
 
         //                Send mail
+//        $sumService = DB::select("Select sum(total) from order_services where order_id in (SELECT id from orders WHERE created_at = (SELECT max(created_at) FROM orders)) group by order_id");
+
         $details = array(
             'name' => $customer->name,
             'room_name' => $order->room->name,
@@ -192,11 +194,12 @@ class BookingController extends Controller
             'check_in_date' => $order->check_in_date,
             'check_out_date' => $order->check_out_date,
             'total' => $order->total,
+//            'services' => $order->order_service->sum()
         );
         $mail = new \App\Mail\B52HotelMail($details);
 //        \Mail::to($request->email)->send(new \App\Mail\B52HotelMail());
     \Mail::to($customer->email)->send($mail);
-    return redirect(route("/"));
+    return redirect(route("bookingSuccess"));
 }
 
     /**

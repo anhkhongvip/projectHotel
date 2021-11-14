@@ -61,6 +61,7 @@ Route::get('/services', [App\Http\Controllers\WebController::class, 'services'])
 Route::get('/terms', [App\Http\Controllers\WebController::class, 'terms'])->name('terms');
 Route::get('/testimonials', [App\Http\Controllers\WebController::class, 'testimonials'])->name('testimonials');
 Route::get('/booking', [App\Http\Controllers\WebController::class, 'booking'])->name('booking');
+Route::get('/bookingSuccess', [App\Http\Controllers\WebController::class, 'bookingSuccess'])->name('bookingSuccess');
 
 
 //Route::get('/post/{id}', [App\Http\Controllers\TestController::class, 'post'])->name('post');

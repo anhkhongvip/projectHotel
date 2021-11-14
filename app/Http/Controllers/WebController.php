@@ -50,7 +50,10 @@ class WebController extends Controller
             ->where('rooms_type_id','=', $id)
             ->orderBy('name')
             ->get();
-        $lsRoomType = rooms_type::all();
+        $lsRoomType = rooms_type::query()
+            ->where('id', '=', $id)
+            ->get();
+//        dd($lsRoomType);
         $lsService = service::all();
         $lsDate = Carbon::now();
         $lsDate = $lsDate->format("Y-m-d");
@@ -118,6 +121,11 @@ class WebController extends Controller
     public function testimonials()
     {
         return view('testimonials');
+    }
+
+    public function bookingSuccess()
+    {
+        return view('bookingSuccess');
     }
 
     public function index()
