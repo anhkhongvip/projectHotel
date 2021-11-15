@@ -15,8 +15,8 @@ class CreateRoomTypeImagesTable extends Migration
     {
         Schema::create('room_type_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('rooms_types_id');
-            $table->string('image');
+            $table->integer('rooms_types_id')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

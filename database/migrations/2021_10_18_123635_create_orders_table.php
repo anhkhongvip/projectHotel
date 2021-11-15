@@ -16,10 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('customer_id');
-            $table->integer('room_id')->references('id')->on('room');
-            $table->date('check_in_date');
-            $table->date('check_out_date');
-            $table->decimal('total');
+            $table->integer('room_id')->references('id')->on('room')->nullable();
+            $table->date('check_in_date')->nullable();
+            $table->date('check_out_date')->nullable();
+            $table->decimal('total')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

@@ -314,7 +314,11 @@ class BookingController extends Controller
     public function detail($id)
     {
         $Order = order::find($id);
-        return view('admin.booking.detail')->with(['Order' => $Order]);
+        $Service = order_service::query()
+            ->where('order_id', '=', $id)
+            ->get();
+//        dd($Service);
+        return view('admin.booking.detail')->with(['Order' => $Order, 'Service' => $Service]);
     }
 
     public function changeStatus(Request $request){

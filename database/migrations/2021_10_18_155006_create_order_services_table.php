@@ -17,7 +17,7 @@ class CreateOrderServicesTable extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('service_id');
-            $table->decimal('total');
+            $table->decimal('price')->nullable();
             $table->timestamps();
         });
     }

@@ -17,16 +17,16 @@ class CreateRoomsTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->double('price');
-            $table->integer('quantity');
-            $table->string('description');
-            $table->string('excerpt');
+            $table->integer('quantity')->nullable();
+            $table->text('description');
+            $table->text('excerpt')->nullable();
             $table->string('image');
-            $table->string('room_size');
-            $table->string('occupancy');
-            $table->string('bed_size');
-            $table->string('swimming_pool');
-            $table->integer('bedroom');
-            $table->integer('bathroom');
+            $table->string('room_size')->nullable();
+            $table->string('occupancy')->nullable();
+            $table->string('bed_size')->nullable();
+            $table->string('swimming_pool')->nullable();
+            $table->integer('bedroom')->nullable();
+            $table->integer('bathroom')->nullable();
             $table->timestamps();
         });
     }

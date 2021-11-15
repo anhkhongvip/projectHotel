@@ -89,7 +89,7 @@
 
         <!-- Customer -->
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <!-- Billing Address -->
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
@@ -108,24 +108,24 @@
                 </div>
                 <!-- END Billing Address -->
             </div>
-{{--            <div class="col-sm-6">--}}
-{{--                <!-- Shipping Address -->--}}
-{{--                <div class="block block-rounded">--}}
-{{--                    <div class="block-header block-header-default">--}}
-{{--                        <h3 class="block-title">Service</h3>--}}
-{{--                    </div>--}}
+            <div class="col-sm-6">
+                <!-- Shipping Address -->
+                <div class="block block-rounded">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Service</h3>
+                    </div>
 
-{{--                    <div class="block-content">--}}
+                    <div class="block-content">
 {{--                        <div class="font-size-h4 mb-1">All service book</div>--}}
-{{--                        @foreach($Order as $order)--}}
+{{--                        @foreach($Service as $service)--}}
 {{--                        <p class="font-size-sm">--}}
-{{--                            {{$order->service->name}}--}}
+{{--                            {{$service->service->name}}--}}
 {{--                        </p>--}}
 {{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- END Shipping Address -->--}}
-{{--            </div>--}}
+                    </div>
+                </div>
+                <!-- END Shipping Address -->
+            </div>
         </div>
         <!-- END Customer -->
 
