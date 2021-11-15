@@ -344,7 +344,7 @@ mark{
 }
 .cbp-af-header.cbp-af-header-shrink .logo{
 	height: 50px;
-	top: 15px;
+	top: -20px;
 	-webkit-transition : all 0.3s ease-out;
 	-moz-transition : all 0.3s ease-out;
 	-o-transition :all 0.3s ease-out;
@@ -540,8 +540,8 @@ span.call-top:hover{
 	-o-transition :all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
-.logo img{
-	height: 100%;
+.cbp-af-header .logo img{
+	height: 300%;
 	width: auto;
 	display: block;
 	-webkit-transition : all 0.3s ease-out;
@@ -549,6 +549,17 @@ span.call-top:hover{
 	-o-transition :all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
+.cbp-af-header.cbp-af-header-shrink .logo img
+{
+    height: 200%;
+    width: auto;
+    display: block;
+    -webkit-transition : all 0.3s ease-out;
+    -moz-transition : all 0.3s ease-out;
+    -o-transition :all 0.3s ease-out;
+    transition : all 0.3s ease-out;
+}
+
 .menu-mobile {
     display: none;
 	padding-top:40px;
@@ -775,13 +786,14 @@ Mobile style's
 		transition : all 0.3s ease-out;
 	}
 	.cbp-af-header.cbp-af-header-shrink .logo{
-		height: 50px;
-		top: 15px;
+		height: 100%;
+		top: -20px;
 		-webkit-transition : all 0.3s ease-out;
 		-moz-transition : all 0.3s ease-out;
 		-o-transition :all 0.3s ease-out;
 		transition : all 0.3s ease-out;
 	}
+
 	.cbp-af-header.cbp-af-header-shrink .menu-top{
 		-webkit-transform: translateY(0);
 		-ms-transform: translateY(0);
@@ -792,7 +804,7 @@ Mobile style's
 		transition : all 0.3s ease-out;
 	}
 	.logo{
-		height: 50px;
+		height: 200px;
 		top: 15px;
 		-webkit-transition : all 0.3s ease-out;
 		-moz-transition : all 0.3s ease-out;
@@ -3614,7 +3626,7 @@ figure.vimeo a img, figure.youtube a img {
 ================================================== */
 
 .footer img{
-	height: 45px;
+	height: 130px;
 	width: auto;
 	display: inline-block;
 }

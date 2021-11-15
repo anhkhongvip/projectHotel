@@ -317,6 +317,7 @@ class BookingController extends Controller
         $Service = order_service::query()
             ->where('order_id', '=', $id)
             ->get();
+//        $Service = DB::select("Select * from order_services where order_id = '$id'");
 //        dd($Service);
         return view('admin.booking.detail')->with(['Order' => $Order, 'Service' => $Service]);
     }

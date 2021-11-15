@@ -16,4 +16,6 @@ class order extends Model
     public function room(){
         return $this->belongsTo('App\Models\room', 'room_id');
     }
+
+
 }

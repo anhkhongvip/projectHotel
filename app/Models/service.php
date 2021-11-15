@@ -9,5 +9,7 @@ class service extends Model
 {
     use HasFactory;
 
-
+    public function order_service(){
+        return $this->hasOne('App\Models\order_service');
+    }
 }

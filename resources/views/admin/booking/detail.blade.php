@@ -96,13 +96,13 @@
                         <h3 class="block-title">Billing Address</h3>
                     </div>
                     <div class="block-content">
-                        <div class="font-size-h4 mb-1">{{$Order->customer->name}}</div>
+                        <div class="font-size-h4" style="margin-bottom: 1.25rem">{{$Order->customer->name}}</div>
                         <address class="font-size-sm">
 {{--                            Sunset Str 598<br>--}}
 {{--                            Melbourne<br>--}}
 {{--                            Australia, 11-671<br><br>--}}
-                            <i class="fa fa-phone mr-2"></i>{{$Order->customer->phone}}<br>
-                            <i class="fa fa-envelope-o"></i> <a href="#">{{$Order->customer->email}}</a>
+                            <i class="fa fa-phone mr-2" style="margin-bottom: 1.25rem"></i>{{$Order->customer->phone}}<br>
+                            <i class="fa fa-envelope-o" style="margin-bottom: 1.25rem"></i> <a href="#">{{$Order->customer->email}}</a>
                         </address>
                     </div>
                 </div>
@@ -117,11 +117,11 @@
 
                     <div class="block-content">
 {{--                        <div class="font-size-h4 mb-1">All service book</div>--}}
-{{--                        @foreach($Service as $service)--}}
-{{--                        <p class="font-size-sm">--}}
-{{--                            {{$service->service->name}}--}}
-{{--                        </p>--}}
-{{--                        @endforeach--}}
+                        @foreach($Service as $service)
+                        <p class="font-size-sm">
+                            {{$service->service->name}}
+                        </p>
+                        @endforeach
                     </div>
                 </div>
                 <!-- END Shipping Address -->

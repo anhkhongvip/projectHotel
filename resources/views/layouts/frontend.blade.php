@@ -7,7 +7,7 @@
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>B52 Hotel</title>
+    <title>Emerald Hotel</title>
     <meta name="description"  content="Professional Creative Template" />
     <meta name="author" content="IG Design">
     <meta name="keywords"  content="ig design, website, design, html5, css3, jquery, creative, clean, animated, portfolio, blog, one-page, multi-page, corporate, business," />
@@ -101,7 +101,7 @@
     <div class="menu">
         <a href="{{route('/')}}" >
             <div class="logo">
-                <img src="{{asset('img/logo3.png')}}" alt="">
+                <img src="{{asset('img/logo6.png')}}" alt="" >
             </div>
         </a>
         <ul>
@@ -148,7 +148,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 text-center text-md-left">
-                <img src="img/logo3.png" alt="">
+                <img src="img/logo6.png" alt="">
                 <p class="color-grey mt-4">Avenue Street 3284<br>Thessaloniki</p>
             </div>
             <div class="col-md-4 text-center text-md-left">
